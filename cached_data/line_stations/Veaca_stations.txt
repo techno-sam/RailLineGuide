@@ -1,0 +1,7 @@
+{{#switch: {{{station}}}
+ | V Tecta = [[V Tecta Union Station]]
+ | PHW = [[Personhood West]]
+ | counterclockwise = counterclockwise
+ | clockwise = clockwise
+ | #default=[[{{{station}}} Station|{{{station}}}]]
+}}

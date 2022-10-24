@@ -1,0 +1,8 @@
+<includeonly>{{#switch: {{{station}}}
+|Shanielle Inlet = [[Shanielle Inlet Station|Shanielle Inlet]]
+|Garden of Eden
+|#default = [[{{{station}}} Ferry Station|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{Eden Ferries stations|station=Garden of Eden}}
+* {{Eden Ferries stations|station=Shanielle Inlet}}
+* {{Eden Ferries stations|station=Nowhere}}

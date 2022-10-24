@@ -1,0 +1,9 @@
+{{#switch: {{{station}}}
+|Spawn=[[Spawn Main Station|Spawn]]
+|Origin=[[Marcuse Street Station|Origin]]
+|Stallmangrad=[[Stallmangrad Central Station|Stallmangrad]]
+|Nadinetopia=[[Nadinetopia Station (Personhood)|Nadinetopia]]
+|Northlands Interchange=[[Northlands Interchange]]
+|Sra/Gef=[[Sraczka2's Village Station|Sraczka2's Village]] / [[Garden of Eden Ferry Station|Garden of Eden Ferry]]
+|#default = [[{{{station}}} Station|{{{station}}}]]
+}}

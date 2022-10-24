@@ -1,0 +1,4 @@
+{{#switch: {{{station}}}
+|Market=[[Banana Place Market Station|Market]]
+|#default = [[{{{station}}} Station|{{{station}}}]]
+}}

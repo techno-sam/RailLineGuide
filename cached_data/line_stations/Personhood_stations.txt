@@ -1,0 +1,34 @@
+<includeonly>{{#switch:{{{station}}}
+| Personhood West
+| west=[[Personhood West Station|Personhood West]]
+| Personhood South
+| south=[[Personhood South Station|Personhood South]]
+| Personhood Main Station
+| Main=[[Personhood Main Station]]
+| shore
+| Shore=[[Shore Station|Shore]]
+| Marnack Mills=[[Marnack Mills Station|Marnack Mills]]
+| Shoot Hills=[[Shoot Hills Station|Shoot Hills]]
+| Panda Reserve=[[Panda Reserve Station|Panda Reserve]]
+| Bamboo Bay Village=[[Bamboo Bay Village Station|Bamboo Bay Village]]
+| Bamboo Bay South=[[Bamboo Bay South Station|Bamboo Bay South]]
+| Bamboo Bay West=[[Bamboo Bay West Station|Bamboo Bay West]]
+| Deep Valley Mountain=[[Deep Valley Mountain Station|Deep Valley Mountain]]
+| Memory=[[Memory Station|Memory]]
+| Plantain Hills=[[Plantain Hills Station|Plantain Hills]]
+|#default=[[{{{station}}} Station (Personhood)|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{Personhood stations|station=west}}
+* {{Personhood stations|station=south}}
+* {{Personhood stations|station=Mushroom Hill}}
+* {{Personhood stations|station=Shore}}
+* {{Personhood stations|station=Marnack Mills}}
+* {{Personhood stations|station=Shoot Hills}}
+* {{Personhood stations|station=Panda Reserve}}
+* {{Personhood stations|station=Bamboo Bay Village}}
+* {{Personhood stations|station=Bamboo Bay South}}
+* {{Personhood stations|station=Bamboo Bay West}}
+* {{Personhood stations|station=Deep Valley Mountain}}
+* {{Personhood stations|station=Memory}}
+* {{Personhood stations|station=Plantain Hills}}
+</noinclude>

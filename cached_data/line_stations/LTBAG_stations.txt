@@ -1,0 +1,12 @@
+<includeonly>{{#switch: {{{station}}}
+| Anju Crossing Central = [[Anju Crossing Central]]
+| Canyon = [[Canyon City Station]]
+| Shore = [[Shore LTBAG Station|Shore LTBAG]]
+|#default = [[{{{station}}} Station|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{LTBAG stations|station=Anju Crossing Central}}
+* {{LTBAG stations|station=Bananawood}}
+* {{LTBAG stations|station=Canyon}}
+* {{LTBAG stations|station=Pyramid}}
+* {{LTBAG stations|station=Shore}}
+</noinclude>

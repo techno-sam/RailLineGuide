@@ -1,0 +1,9 @@
+<includeonly>{{#switch:{{{station}}}
+| Origin = [[Origin Subway Station|Origin]]
+| Marcuse Street = [[Marcuse Street Station|Marcuse Street]]
+|#default = [[{{{station}}} Station (Origin Ring Lines)|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{Origin Ring Lines stations|station=Origin}}
+* {{Origin Ring Lines stations|station=Marcuse Street}}
+* {{Origin Ring Lines stations|station=spaghetti}}
+</noinclude>

@@ -1,0 +1,7 @@
+<includeonly>{{#switch:{{{station}}}
+|South Forest=[[{{{station}}} Station|{{{station}}}]]
+|#default=[[{{{station}}} Subway Station|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{South Forest Subway stations|station=South Forest}}
+* {{South Forest Subway stations|station=Greenhat Mountain}}
+</noinclude>

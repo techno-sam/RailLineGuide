@@ -1,0 +1,11 @@
+<includeonly>{{#switch:{{{station}}}
+|Stallmangrad=[[Stallmangrad Central Station]]
+|Banana Junction
+|Ray City=[[{{{station}}} Station|{{{station}}}]]
+|#default=[[{{{station}}} Subway Station (Stallmangrad)|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{Stallmangrad stations|station=Stallmangrad}}
+* {{Stallmangrad stations|station=Banana Junction}}
+* {{Stallmangrad stations|station=Ray City}}
+* {{Stallmangrad stations|station=RL03}}
+</noinclude>

@@ -1,0 +1,4 @@
+{{#switch: {{{station}}}
+|lighthouse = [[Lighthouse Station]]
+|#default = [[{{{station}}} Station (Railway 56)|{{{station}}}]]
+}}

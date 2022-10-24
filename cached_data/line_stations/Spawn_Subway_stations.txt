@@ -1,0 +1,32 @@
+<includeonly>{{#switch:{{{station}}}
+|AHRAZHUL=[[AHRAZHUL's Station]]
+|slohag=[[Smacker's Land of Hope and Glory Subway Station|Smacker's Land of Hope and Glory]]
+|Eiffel Street
+|Perl Prospect
+|Apple Grove
+|Leekston
+|Leekston Jungle
+|Leekston East
+|Leekston Ferry
+|Land's End (Planetarium)
+|Birch Bay
+|Banana Forest=[[{{{station}}} Station|{{{station}}}]]
+|Anju Crossing Central
+|Szymon's Dam=[[{{{station}}}]]
+|Marcuse Street=[[Marcuse Street Station|Marcuse Street]]
+|Spawn Main=[[Spawn Main Station (Subway)|Spawn Main]]
+|Pierre Berton Street=[[Origin Berton Street Station|Pierre Berton Street]]
+|Land's End=[[Land's End (Planetarium) Station|Planetarium]]
+|OCS/IceM=[[OCP Showroom Subway Station|OCP Showroom]] / [[Ice Mountain Subway Station|Ice Mountain]]
+|NYE/Sws=[[NYE Square Subway Station|NYE Square]] / [[Schwarzschild Street Station|Schwarzschild Street]]
+|#default=[[{{{station}}} Subway Station|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{Spawn Subway stations|station=Edenwood Beach}}
+* {{Spawn Subway stations|station=Szymon's Dam}}
+* {{Spawn Subway stations|station=Banana Forest}}
+* {{Spawn Subway stations|station=AHRAZHUL}}
+* {{Spawn Subway stations|station=slohag}}
+* {{Spawn Subway stations|station=Birch Bay}}
+* {{Spawn Subway stations|station=OCS/IceM}}
+* {{Spawn Subway stations|station=NYE/Sws}}
+</noinclude>

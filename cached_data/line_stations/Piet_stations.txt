@@ -1,0 +1,4 @@
+{{#switch: {{{station}}}
+| Smacker = [[Smacker Station (Piet Rail)|Smacker]]
+| #default = [[{{{station}}} Station|{{{station}}}]]
+}}

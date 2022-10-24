@@ -1,0 +1,5 @@
+{{#switch: {{{station}}}
+|Large Beach = [[Large Beach Subway Station]]
+|Residential Area = Residential Area
+|#default = [[{{{station}}} Station (Birch Bay)|{{{station}}}]]
+}}

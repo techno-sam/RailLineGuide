@@ -1,0 +1,5 @@
+{{#switch:{{{station}}}
+| central = [[Trap City Central Station|Trap City Central]]
+| north = [[Trap City North Station|Trap City North]]
+|#default=[[{{{station}}} Station|{{{station}}}]]
+}}

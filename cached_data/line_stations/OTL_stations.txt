@@ -1,0 +1,31 @@
+<includeonly>{{#switch: {{{station}}}
+|Clockwise|clockwise = clockwise
+|Anticlockwise|anticlockwise = anticlockwise
+|The Cube|cube|Cube = [[The Cube Station|The Cube]]
+|Neverbuild West|west|West = [[Neverbuild West Station|Neverbuild West]]
+|Personhood|personhood = [[Personhood Main Station|Personhood]]
+|central = [[Neverbuild Station|Neverbuild]]
+|Mushroom Hill
+|Bamboo Bridge = [[{{{station}}} Station (OTL)|{{{station}}}]]
+|Spawn 21
+|Island|island
+|Shore|shore
+|Bananawood|bananawood
+|Shikatanaevo|shikatanaevo
+|Dodemo-iisk|dodemo-iisk
+|North Harbour|North harbour|north harbour|North Harbor|North harbor|north harbor|
+|Proletarian|proletarian
+|Bambus|bambus = [[{{{station}}} Station|{{{station}}}]]
+|#default = [[{{{station}}} Station (Neverbuild)|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{OTL_stations|station=clockwise}}
+* {{OTL_stations|station=anticlockwise}}
+* {{OTL_stations|station=west}}
+* {{OTL_stations|station=central}}
+* {{OTL_stations|station=piet}}
+* {{OTL_stations|station=Shore}}
+* {{OTL_stations|station=Bambus}}
+* {{OTL_stations|station=Personhood}}
+* {{OTL_stations|station=Cube}}
+* {{OTL_stations|station=Bamboo Bridge}}
+</noinclude>

@@ -1,0 +1,6 @@
+{{#switch: {{{station}}}
+|Spawn=[[Spawn Main Station|Spawn]]
+|Origin=[[Marcuse Street Station|Origin]]
+|Schwarzschild Passing Track=[[{{{station}}}]]
+|#default = [[{{{station}}} Station|{{{station}}}]]
+}}

@@ -1,0 +1,16 @@
+<includeonly>{{#switch: {{{station}}}
+| Trisiston
+| Elders Valley
+| Elders Valley Northwest
+| Elders Valley Beach
+| Elders Valley West
+| Elders Valley South
+| iceberg on bamboo
+| iceberg
+| Cato's Village
+| Iceberg on Bamboo = [[{{{station}}} Station|{{{station}}}]]
+|#default=[[{{{station}}} Station (Trisiston)|{{{station}}}]]
+}}</includeonly><noinclude>
+* {{Trisiston stations|station=Trisiston}}
+* {{Trisiston stations|station=Freya Woods}}
+</noinclude>
