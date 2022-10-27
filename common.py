@@ -1,7 +1,9 @@
-__all__ = ["StationPart", "Link"]
+__all__ = ["StationPart", "Link", "Station", "StationGraph"]
 
+import time
 import typing
-import json
+import queue
+from colorama import Fore, Style
 
 _opt_str = typing.Optional[str]
 
@@ -32,6 +34,14 @@ class Link:
         self.is_transfer = is_transfer
         """Rather than taking a train, transfer on foot between stations"""
 
+        self.is_manual = False
+        """If this link was manually added"""
+
+    def manual(self):
+        """Mark this link as manually added"""
+        self.is_manual = True
+        return self
+
     @staticmethod
     def transfer(from_name: str, to_name: str):
         """Quick utility to build a transfer between two nearby stations"""
@@ -46,6 +56,8 @@ class Link:
             out += "(Transfer on foot)"
         else:
             out += f"(Along `{self.rail_system}` Line `{self.rail_line}`)"
+        if self.is_manual:
+            out += " (Manual)"
         return out
 
     def __hash__(self) -> int:
@@ -66,6 +78,8 @@ class Link:
                 "system": self.rail_system,
                 "line": self.rail_line
             })
+        if self.is_manual:
+            d["manual"] = True
         return d
 
     @staticmethod
@@ -75,7 +89,227 @@ class Link:
         system = data.get("system", None)
         line = data.get("line", None)
         is_transfer = data.get("transfer", False)
-        return Link(frm, to, system, line, is_transfer)
+        link = Link(frm, to, system, line, is_transfer)
+        if data.get("manual", False):
+            link.manual()
+        return link
+
+    def copy(self) -> "Link":
+        return Link.load(self.save())
+
+
+class Station:
+    def __init__(self, name: str, *links: Link):
+        """A station with a name and a list of links to other stations
+
+        :param name: Station name
+        :param links: Links to other stations"""
+        self.name = name
+        """Station name"""
+
+        self.links: typing.List[Link] = list(links)
+        """Links departing from this station"""
+
+    def __repr__(self) -> str:
+        return f"Station [{self.name}]"
+
+    def links_on_system(self, system: str, line: str = None) -> typing.List[Link]:
+        """Limit number of transfers required for a route"""
+        out = []
+        for link in self.links:
+            if link.rail_system == system and (line is None or link.rail_line == line):
+                out.append(link)
+        return out
+
+    def copy(self):
+        return Station(self.name, *self.links)
+
+
+class Route:
+    def __init__(self, start: Station, goal: str, *links: Link):
+        self.links: list[Link] = list(links)
+        self._traveled_station_names: set[str] = {start.name}
+        self.start = start
+        self.current_end = start.name
+        self.goal = goal
+
+    def is_valid(self, dbg=False) -> bool:
+        prev_station = None
+        for link in self.links:
+            if dbg:
+                print("Link:", link, ", prev:", prev_station)
+            if prev_station is not None and prev_station != link.from_name:
+                print(prev_station, "|", link)
+                return False
+            prev_station = link.to_name
+        return True
+
+    def print_test(self, verbose=True):
+        if verbose:
+            print(f"{self} Cost: {self.cost(0)} (Merged cost: {self.merged().cost(0)}) (Valid: {self.is_valid()})")
+            for link in self.links:
+                print(f"\t{link}")
+            print("\nMerged:")
+        else:
+            print(f"{Fore.BLUE}{Style.BRIGHT}{self.start.name} -> {self.goal}{Style.NORMAL}{Fore.CYAN} | Cost:"
+                  f" {self.cost(0)} | Merged: {self.merged().cost(0)}{Style.RESET_ALL}")
+        alternate = False
+        for link in self.merged().links:
+            alternate = not alternate
+            print(f"\t{Fore.GREEN if alternate else Fore.LIGHTGREEN_EX}{link}{Style.RESET_ALL}")
+
+    def add_link(self, link: Link) -> "Route":
+        if link.to_name in self._traveled_station_names:
+            raise ValueError("Cannot create a loop")
+        self._traveled_station_names.add(link.to_name)
+
+        new_route = Route(self.start, self.goal, *self.links)
+        for tsn in self._traveled_station_names:
+            new_route._traveled_station_names.add(tsn)
+        if link.from_name != self.current_end:
+            raise Exception(f"{link} does not originate at {self.current_end}")
+        if new_route.links and new_route.links[-1].to_name != link.from_name:
+            raise Exception(f"{new_route.links} incompatible with {link}")
+        new_route.links.append(link)
+        new_route.current_end = link.to_name
+        return new_route
+
+    def merged(self) -> "Route":
+        """Merge all links in this route along the same line and system into one"""
+        new_route = Route(self.start, self.goal)
+        for link in self.links:
+            if new_route.links:
+                last_link = new_route.links[-1]
+                if last_link.rail_system == link.rail_system and last_link.rail_line == link.rail_line\
+                        and not last_link.is_transfer and not link.is_transfer:
+                    new_route.links[-1].to_name = link.to_name
+                else:
+                    new_route.links.append(link.copy())
+            else:
+                new_route.links.append(link.copy())
+        new_route.current_end = self.current_end
+        for tsn in self._traveled_station_names:
+            new_route._traveled_station_names.add(tsn)
+        return new_route
+
+    def is_complete(self) -> bool:
+        return self.current_end == self.goal
+
+    def cost(self, change_weight: float) -> int:
+        cost = 0
+        previous_system = None
+        previous_line = None
+        for link in self.links:
+            if previous_system is not None and previous_system is not None:
+                if link.rail_system != previous_system or link.rail_line != previous_line:
+                    cost += change_weight
+            cost += 1
+            previous_system = link.rail_system
+            previous_line = link.rail_line
+        return cost
+
+    def __repr__(self) -> str:
+        return f"Route [{self.start.name} -> {self.current_end} (Goal: {self.goal})]"
+
+    def __len__(self) -> int:
+        return len(self.links)
+
+
+# manage stations and build routes
+class StationGraph:
+    def __init__(self):
+        self._stations: typing.Dict[str, Station] = {}
+
+    def add_station(self, station: Station):
+        self._stations[station.name] = station
+
+    def add_station_name(self, name: str):
+        self._stations[name] = Station(name)
+
+    def add_link(self, link: Link):
+        if link.from_name not in self._stations:
+            self.add_station_name(link.from_name)
+
+        self._stations[link.from_name].links.append(link)
+
+    def all_station_names(self) -> typing.List[str]:
+        ret = list(self._stations.keys())
+        ret.sort()
+        return ret
+
+    def find_route(self, from_name: str, to_name: str, strategy: int = 10, change_weight: float = 0.4) -> list[Route]:
+        """Find a route between two stations
+
+        :param from_name: Station of Origin
+        :param to_name: Destination Station
+        :param strategy: -1 for perfect: brute force all possible routes; 0: return first route found
+        1 - infinity: make random routes until `strategy` routes have been found, or 3*`strategy` attempts have been
+        made and at least 1 has been found
+        :param change_weight: How much to penalize changing trains, ex 1.0 means changing trains is as bad as an extra
+        station traveled
+        """
+        for name, stat in self._stations.items():
+            if name != stat.name:
+                raise ValueError(f"Name {name} doesn't match station {stat.name}| {stat}")
+        if from_name not in self._stations or to_name not in self._stations:
+            return []
+        start = time.time()
+        if True:
+            solved_routes: list[Route] = []
+            best_merged_hops = float("inf")
+            route_queue: queue.Queue[Route] = queue.Queue()
+            route_queue.put(Route(self._stations[from_name], to_name))
+            iters = 0
+            while not route_queue.empty(): # Cow Bridge Subway Station -> Hippodrome Station
+                if (len(solved_routes) >= (500 if strategy == -1 else strategy)) or (best_merged_hops <= 3 and len(solved_routes) > 5)\
+                        or (len(solved_routes) > 0 and time.time()-start > 50)\
+                        or (time.time()-start > 30 and best_merged_hops <= 6):
+                    break
+                iters += 1
+                if iters % 5000 == 0:
+                    print("Queue size:", route_queue.qsize(), "Solved routes:", len(solved_routes))
+                # print("Getting route")
+                try:
+                    rt = route_queue.get(block=False)
+                except queue.Empty:
+                    break
+                # print(f"Got route {rt}")
+                # print(f"{rt}: {len(rt)}")
+                end_station = self._stations[rt.current_end]
+
+                # If we can stay on the same train to get to a station, do so
+                only_acceptable = {}
+                if rt.links:
+                    system, line = rt.links[-1].rail_system, rt.links[-1].rail_line
+                    for on_system in end_station.links_on_system(system, line):
+                        only_acceptable[on_system.to_name] = on_system
+                for link in end_station.links:
+                    try:
+                        dst = link.to_name
+                        if dst in only_acceptable and only_acceptable[dst] != link:
+                            continue
+                        new_rt = rt.add_link(link)
+                        if not new_rt.is_valid():
+                            print("INV ROUTE")
+                            raise Exception(f"Invalid route built from: {rt}, es: {end_station}, new: {new_rt}, link: {link}")
+                        if new_rt.is_complete():
+                            solved_routes.append(new_rt)
+                            merged_cost = new_rt.merged().cost(0)
+                            if merged_cost < best_merged_hops:
+                                best_merged_hops = merged_cost
+                                print("New best merged hops:", best_merged_hops)
+                        else:
+                            route_queue.put(new_rt)
+                    except ValueError as e:
+                        pass  # print(f"Error adding link {link} to route {rt}: {e}")
+            for rt in solved_routes:
+                if not rt.is_valid():
+                    raise Exception("Invalid found")  # Koshahood Station -> CXC Station
+            solved_routes.sort(key=lambda x: x.cost(change_weight))
+            for rt in solved_routes:
+                if not rt.is_valid():
+                    raise Exception("Invalid found post sort")
+            return solved_routes
 
 
 DISABLED_LINKS: typing.List[Link] = [

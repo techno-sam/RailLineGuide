@@ -44,7 +44,7 @@ api_path = "http://wiki.linux-forks.de/mediawiki/api.php"
 lw_wiki = CustomizableEndpointWiki(domain="wiki.linux-forks.de",
                                    api_endpoint="https://wiki.linux-forks.de/mediawiki/api.php",
                                    cookie_jar=Path("./cookies"),
-                                   username="name-here")  # make username lowercase to login, uppercase to use cookies
+                                   username="Apprentice")  # make username lowercase to login, uppercase to use cookies
 lw_wiki.save_cookies()
 
 
@@ -191,6 +191,10 @@ for station_name, page_contents in stations_data.items():
             previous_station = line_dict.get("previous",
                                              None)  # Need parsing with page "System_Name_stations" to get full page name. Do this now
             next_station = line_dict.get("next", None)
+            if next_station == "":
+                next_station = None
+            if previous_station == "":
+                previous_station = None
             if train_system in ignored_systems:
                 continue
             if previous_station == "???" or next_station == "???":
