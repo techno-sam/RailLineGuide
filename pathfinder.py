@@ -31,7 +31,7 @@ def find_and_print_route():
 #    from_name = input("From: ")
 #    to_name = input("To: ")
     from_name = "Koshahood Station"
-    to_name = "CXC Station"  # About 12 seconds w/o threading
+    to_name = "CXC Station"  # About 13 seconds w/o threading and strategy=100
     print("Solving...\n")
     pre = time.perf_counter()
     routes = station_graph.find_route(from_name, to_name, change_weight=0.1, strategy=100)
@@ -50,6 +50,7 @@ def find_and_print_route():
 while True:
     try:
         find_and_print_route()
+        break
     except Exception as e:
         raise
 

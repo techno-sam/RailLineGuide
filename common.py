@@ -3,6 +3,7 @@ __all__ = ["StationPart", "Link", "Station", "StationGraph"]
 import time
 import typing
 import queue
+import threading
 from colorama import Fore, Style
 
 _opt_str = typing.Optional[str]
@@ -214,6 +215,12 @@ class Route:
     def __len__(self) -> int:
         return len(self.links)
 
+    def __lt__(self, other):
+        if isinstance(other, Route):
+            return self.cost(0) > other.cost(0)
+        else:
+            raise TypeError(f"< not supported between instances of 'Route' and {other.__class__}")
+
 
 # manage stations and build routes
 class StationGraph:
@@ -237,42 +244,81 @@ class StationGraph:
         ret.sort()
         return ret
 
-    def find_route(self, from_name: str, to_name: str, strategy: int = 10, change_weight: float = 0.4) -> list[Route]:
+    def find_route(self, from_name: str, to_name: str, strategy: int = 10, change_weight: float = 0.4,
+                   max_iters: int = -1) -> list[Route]:
         """Find a route between two stations
 
         :param from_name: Station of Origin
         :param to_name: Destination Station
         :param strategy: -1 for perfect: brute force all possible routes; 0: return first route found
-        1 - infinity: make random routes until `strategy` routes have been found, or 3*`strategy` attempts have been
-        made and at least 1 has been found
+        1 - infinity: make random routes until `strategy` routes have been found
         :param change_weight: How much to penalize changing trains, ex 1.0 means changing trains is as bad as an extra
         station traveled
+        :param max_iters: if > 0, force stop after `max_iters` iterations
         """
         for name, stat in self._stations.items():
             if name != stat.name:
                 raise ValueError(f"Name {name} doesn't match station {stat.name}| {stat}")
         if from_name not in self._stations or to_name not in self._stations:
             return []
+
+        # Setup route solving
         start = time.time()
-        if True:
-            solved_routes: list[Route] = []
+
+        solved_routes: list[Route] = []
+        solved_routes_mutex = threading.Lock()
+
+        route_queue: queue.PriorityQueue[Route] = queue.PriorityQueue()
+        route_queue.put(Route(self._stations[from_name], to_name))
+
+        def solver(solved_routes_mut: threading.Lock, solved_routes_list: list[Route]):
             best_merged_hops = float("inf")
-            route_queue: queue.Queue[Route] = queue.Queue()
-            route_queue.put(Route(self._stations[from_name], to_name))
             iters = 0
-            while not route_queue.empty(): # Cow Bridge Subway Station -> Hippodrome Station
-                if (len(solved_routes) >= (500 if strategy == -1 else strategy)) or (best_merged_hops <= 3 and len(solved_routes) > 5)\
-                        or (len(solved_routes) > 0 and time.time()-start > 50)\
-                        or (time.time()-start > 30 and best_merged_hops <= 6):
+            route_queue_private: queue.Queue[Route] = queue.Queue()
+            while True:
+                if 0 < max_iters < iters:
                     break
+                if True:
+                    if strategy == -1:
+                        if (len(solved_routes_list) > 500) or (best_merged_hops <= 3 and len(solved_routes_list) > 5)\
+                                or (len(solved_routes_list) > 0 and time.time()-start > 50)\
+                                or (time.time()-start > 30 and best_merged_hops <= 6):
+                            break
+                    elif strategy == 0:
+                        if len(solved_routes_list) > 0:
+                            break
+                    else:
+                        if len(solved_routes_list) >= strategy:
+                            break
                 iters += 1
                 if iters % 5000 == 0:
-                    print("Queue size:", route_queue.qsize(), "Solved routes:", len(solved_routes))
-                # print("Getting route")
+                    with solved_routes_mut:
+                        print("Queue size:", route_queue_private.qsize(), "Solved routes:", len(solved_routes_list), "Iters:", iters)
+                if iters % 19000 == 0:
+                    print(f"{Style.BRIGHT}{Fore.YELLOW}[{threading.current_thread().name}] Pushing items{Style.RESET_ALL}")
+                    while True:
+                        try:
+                            val = route_queue_private.get(block=False)
+                            route_queue.put(val)
+                        except queue.Empty:
+                            break
                 try:
-                    rt = route_queue.get(block=False)
+                    rt = route_queue_private.get(block=False)
                 except queue.Empty:
-                    break
+#                    print(f"{Style.BRIGHT}{Fore.LIGHTBLUE_EX}[{threading.current_thread().name}] Private queue empty, "
+#                          f"getting new items...{Style.RESET_ALL}")
+                    for _ in range(10):
+                        try:
+                            route_queue_private.put(route_queue.get(block=False))
+                        except queue.Empty:
+                            break
+#                    print(f"{threading.current_thread().name} Got.")
+                    try:
+                        rt = route_queue_private.get(block=False)
+                    except queue.Empty:
+                        print("Didn't find any, sleeping")
+                        time.sleep(1)
+                        continue
                 # print(f"Got route {rt}")
                 # print(f"{rt}: {len(rt)}")
                 end_station = self._stations[rt.current_end]
@@ -283,6 +329,9 @@ class StationGraph:
                     system, line = rt.links[-1].rail_system, rt.links[-1].rail_line
                     for on_system in end_station.links_on_system(system, line):
                         only_acceptable[on_system.to_name] = on_system
+
+                to_append = []
+
                 for link in end_station.links:
                     try:
                         dst = link.to_name
@@ -290,26 +339,39 @@ class StationGraph:
                             continue
                         new_rt = rt.add_link(link)
                         if not new_rt.is_valid():
-                            print("INV ROUTE")
                             raise Exception(f"Invalid route built from: {rt}, es: {end_station}, new: {new_rt}, link: {link}")
                         if new_rt.is_complete():
-                            solved_routes.append(new_rt)
+                            # with solved_routes_mut:
+                            #    solved_routes_list.append(new_rt)
+                            to_append.append(new_rt)
                             merged_cost = new_rt.merged().cost(0)
                             if merged_cost < best_merged_hops:
                                 best_merged_hops = merged_cost
-                                print("New best merged hops:", best_merged_hops)
+                                print(f"{Fore.RED}New best merged hops: {best_merged_hops}{Style.RESET_ALL}")
                         else:
-                            route_queue.put(new_rt)
+                            route_queue_private.put(new_rt)
                     except ValueError as e:
                         pass  # print(f"Error adding link {link} to route {rt}: {e}")
-            for rt in solved_routes:
-                if not rt.is_valid():
-                    raise Exception("Invalid found")  # Koshahood Station -> CXC Station
-            solved_routes.sort(key=lambda x: x.cost(change_weight))
-            for rt in solved_routes:
-                if not rt.is_valid():
-                    raise Exception("Invalid found post sort")
-            return solved_routes
+
+                with solved_routes_mut:
+                    for ta in to_append:
+                        solved_routes_list.append(ta)
+            print(f"{Style.BRIGHT}{Fore.CYAN}{threading.current_thread().name} exited...")
+
+        thread_count = 1
+        solve_threads = []
+        for _ in range(thread_count):
+            solve_thread = threading.Thread(target=solver, args=(threading.Lock(), solved_routes), daemon=True)
+            solve_thread.start()
+            solve_threads.append(solve_thread)
+
+        for st in solve_threads:  # Wait for all solver threads to complete before returning
+            st.join()
+
+        # Koshahood Station -> CXC Station
+        print("Returning...")
+        solved_routes.sort(key=lambda x: x.cost(change_weight))
+        return solved_routes
 
 
 DISABLED_LINKS: typing.List[Link] = [
