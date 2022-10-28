@@ -267,13 +267,12 @@ class StationGraph:
 
         solved_routes: list[Route] = []
 
-        route_queue: queue.Queue[Route] = queue.PriorityQueue()
+        route_queue: queue.Queue[Route] = queue.Queue()
         route_queue.put(Route(self._stations[from_name], to_name))
 
         def solver(solved_routes_list: list[Route]):
             best_merged_hops = float("inf")
             iters = 0
-            route_queue_private: queue.Queue[Route] = queue.Queue()
             while True:
                 if 0 < max_iters < iters:
                     break
@@ -291,33 +290,11 @@ class StationGraph:
                             break
                 iters += 1
                 if iters % 5000 == 0:
-                    print("Queue size:", route_queue_private.qsize(), "Solved routes:", len(solved_routes_list), "Iters:", iters)
-                if iters % 1700 == 0:  # Best: 1700
-                    #print(f"{Fore.GREEN}Queue size: {route_queue_private.qsize()} Solved routes: {len(solved_routes_list)} Iters: {iters}{Style.RESET_ALL}")
-                    #print(f"{Style.BRIGHT}{Fore.YELLOW}[{threading.current_thread().name}] Pushing items{Style.RESET_ALL}")
-                    while True:
-                        try:
-                            val = route_queue_private.get(block=False)
-                            route_queue.put(val)
-                        except queue.Empty:
-                            break
+                    print("Queue size:", route_queue.qsize(), "Solved routes:", len(solved_routes_list), "Iters:", iters)
                 try:
-                    rt = route_queue_private.get(block=False)
+                    rt = route_queue.get(block=False)
                 except queue.Empty:
-#                    print(f"{Style.BRIGHT}{Fore.LIGHTBLUE_EX}[{threading.current_thread().name}] Private queue empty, "
-#                          f"getting new items...{Style.RESET_ALL}")
-                    for _ in range(10):  # Best: 10
-                        try:
-                            route_queue_private.put(route_queue.get(block=False))
-                        except queue.Empty:
-                            break
-#                    print(f"{threading.current_thread().name} Got.")
-                    try:
-                        rt = route_queue_private.get(block=False)
-                    except queue.Empty:
-                        print("Didn't find any, sleeping")
-                        time.sleep(1)
-                        continue
+                    break
                 # print(f"Got route {rt}")
                 # print(f"{rt}: {len(rt)}")
                 end_station = self._stations[rt.current_end]
@@ -329,8 +306,6 @@ class StationGraph:
                     for on_system in end_station.links_on_system(system, line):
                         only_acceptable[on_system.to_name] = on_system
 
-                to_append = []
-
                 for link in end_station.links:
                     try:
                         dst = link.to_name
@@ -340,20 +315,16 @@ class StationGraph:
                         if not new_rt.is_valid():
                             raise Exception(f"Invalid route built from: {rt}, es: {end_station}, new: {new_rt}, link: {link}")
                         if new_rt.is_complete():
-                            # with solved_routes_mut:
-                            #    solved_routes_list.append(new_rt)
-                            to_append.append(new_rt)
+                            solved_routes_list.append(new_rt)
                             merged_cost = new_rt.merged().cost(0)
                             if merged_cost < best_merged_hops:
                                 best_merged_hops = merged_cost
                                 print(f"{Fore.RED}New best merged hops: {best_merged_hops}{Style.RESET_ALL}")
                         else:
-                            route_queue_private.put(new_rt)
+                            route_queue.put(new_rt)
                     except ValueError as e:
                         pass  # print(f"Error adding link {link} to route {rt}: {e}")
 
-                for ta in to_append:
-                    solved_routes_list.append(ta)
             print(f"{Style.BRIGHT}{Fore.CYAN}{threading.current_thread().name} exited...")
 
         solver(solved_routes)
