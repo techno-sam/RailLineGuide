@@ -127,12 +127,13 @@ class Station:
 
 
 class Route:
-    def __init__(self, start: Station, goal: str, *links: Link):
+    def __init__(self, station_graph: "StationGraph", start: Station, goal: str, *links: Link):
         self.links: list[Link] = list(links)
         self._traveled_station_names: set[str] = {start.name}
         self.start = start
         self.current_end = start.name
         self.goal = goal
+        self.station_graph = station_graph
 
     def is_valid(self, dbg=False) -> bool:
         prev_station = None
@@ -164,7 +165,7 @@ class Route:
             raise ValueError("Cannot create a loop")
         self._traveled_station_names.add(link.to_name)
 
-        new_route = Route(self.start, self.goal, *self.links)
+        new_route = Route(self.station_graph, self.start, self.goal, *self.links)
         for tsn in self._traveled_station_names:
             new_route._traveled_station_names.add(tsn)
         if link.from_name != self.current_end:
@@ -177,7 +178,7 @@ class Route:
 
     def merged(self) -> "Route":
         """Merge all links in this route along the same line and system into one"""
-        new_route = Route(self.start, self.goal)
+        new_route = Route(self.station_graph, self.start, self.goal)
         for link in self.links:
             if new_route.links:
                 last_link = new_route.links[-1]
@@ -266,12 +267,11 @@ class StationGraph:
         start = time.time()
 
         solved_routes: list[Route] = []
-        solved_routes_mutex = threading.Lock()
 
-        route_queue: queue.PriorityQueue[Route] = queue.PriorityQueue()
-        route_queue.put(Route(self._stations[from_name], to_name))
+        route_queue: queue.Queue[Route] = queue.PriorityQueue()
+        route_queue.put(Route(self, self._stations[from_name], to_name))
 
-        def solver(solved_routes_mut: threading.Lock, solved_routes_list: list[Route]):
+        def solver(solved_routes_list: list[Route]):
             best_merged_hops = float("inf")
             iters = 0
             route_queue_private: queue.Queue[Route] = queue.Queue()
@@ -292,10 +292,10 @@ class StationGraph:
                             break
                 iters += 1
                 if iters % 5000 == 0:
-                    with solved_routes_mut:
-                        print("Queue size:", route_queue_private.qsize(), "Solved routes:", len(solved_routes_list), "Iters:", iters)
-                if iters % 19000 == 0:
-                    print(f"{Style.BRIGHT}{Fore.YELLOW}[{threading.current_thread().name}] Pushing items{Style.RESET_ALL}")
+                    print("Queue size:", route_queue_private.qsize(), "Solved routes:", len(solved_routes_list), "Iters:", iters)
+                if iters % 1700 == 0:  # Best: 1700
+                    #print(f"{Fore.GREEN}Queue size: {route_queue_private.qsize()} Solved routes: {len(solved_routes_list)} Iters: {iters}{Style.RESET_ALL}")
+                    #print(f"{Style.BRIGHT}{Fore.YELLOW}[{threading.current_thread().name}] Pushing items{Style.RESET_ALL}")
                     while True:
                         try:
                             val = route_queue_private.get(block=False)
@@ -307,7 +307,7 @@ class StationGraph:
                 except queue.Empty:
 #                    print(f"{Style.BRIGHT}{Fore.LIGHTBLUE_EX}[{threading.current_thread().name}] Private queue empty, "
 #                          f"getting new items...{Style.RESET_ALL}")
-                    for _ in range(10):
+                    for _ in range(10):  # Best: 10
                         try:
                             route_queue_private.put(route_queue.get(block=False))
                         except queue.Empty:
@@ -353,20 +353,11 @@ class StationGraph:
                     except ValueError as e:
                         pass  # print(f"Error adding link {link} to route {rt}: {e}")
 
-                with solved_routes_mut:
-                    for ta in to_append:
-                        solved_routes_list.append(ta)
+                for ta in to_append:
+                    solved_routes_list.append(ta)
             print(f"{Style.BRIGHT}{Fore.CYAN}{threading.current_thread().name} exited...")
 
-        thread_count = 1
-        solve_threads = []
-        for _ in range(thread_count):
-            solve_thread = threading.Thread(target=solver, args=(threading.Lock(), solved_routes), daemon=True)
-            solve_thread.start()
-            solve_threads.append(solve_thread)
-
-        for st in solve_threads:  # Wait for all solver threads to complete before returning
-            st.join()
+        solver(solved_routes)
 
         # Koshahood Station -> CXC Station
         print("Returning...")

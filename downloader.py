@@ -426,7 +426,9 @@ print(f"Number of links: {pre}")
 print(f"Number of (deduplicated) links: {post}, difference: {pre-post}")
 print(f"Number of open stations: {len(stations_data)-len(closed_stations)}")
 
+all_links.sort(key=lambda x: str(x))
 print("Saving links...")
 with open("saves/all_links.json", "w") as f:
-    json.dump([v.save() for v in all_links], f, indent=4)
+    val = [v.save() for v in all_links]
+    json.dump(val, f, indent=4)
 print("Done.")
