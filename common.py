@@ -127,13 +127,12 @@ class Station:
 
 
 class Route:
-    def __init__(self, station_graph: "StationGraph", start: Station, goal: str, *links: Link):
+    def __init__(self, start: Station, goal: str, *links: Link):
         self.links: list[Link] = list(links)
         self._traveled_station_names: set[str] = {start.name}
         self.start = start
         self.current_end = start.name
         self.goal = goal
-        self.station_graph = station_graph
 
     def is_valid(self, dbg=False) -> bool:
         prev_station = None
@@ -165,7 +164,7 @@ class Route:
             raise ValueError("Cannot create a loop")
         self._traveled_station_names.add(link.to_name)
 
-        new_route = Route(self.station_graph, self.start, self.goal, *self.links)
+        new_route = Route(self.start, self.goal, *self.links)
         for tsn in self._traveled_station_names:
             new_route._traveled_station_names.add(tsn)
         if link.from_name != self.current_end:
@@ -178,7 +177,7 @@ class Route:
 
     def merged(self) -> "Route":
         """Merge all links in this route along the same line and system into one"""
-        new_route = Route(self.station_graph, self.start, self.goal)
+        new_route = Route(self.start, self.goal)
         for link in self.links:
             if new_route.links:
                 last_link = new_route.links[-1]
@@ -269,7 +268,7 @@ class StationGraph:
         solved_routes: list[Route] = []
 
         route_queue: queue.Queue[Route] = queue.PriorityQueue()
-        route_queue.put(Route(self, self._stations[from_name], to_name))
+        route_queue.put(Route(self._stations[from_name], to_name))
 
         def solver(solved_routes_list: list[Route]):
             best_merged_hops = float("inf")
