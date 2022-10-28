@@ -1,5 +1,6 @@
 __all__ = ["StationPart", "Link", "Station", "StationGraph"]
 
+import math
 import time
 import typing
 import queue
@@ -37,6 +38,18 @@ class Link:
 
         self.is_manual = False
         """If this link was manually added"""
+
+        self.distance = None
+
+    def calculate_distance(self, station_coordinates: dict[str, list[int]]):
+        # find 3d distance between stations, using 3d pythagorean theorem
+        try:
+            from_pos = station_coordinates[self.from_name]
+            to_pos = station_coordinates[self.to_name]
+            self.distance = math.sqrt((from_pos[0] - to_pos[0]) ** 2 + (from_pos[1] - to_pos[1]) ** 2 + (from_pos[2] - to_pos[2]) ** 2)
+        except KeyError as e:
+            # print(repr(e))
+            self.distance = 100
 
     def manual(self):
         """Mark this link as manually added"""
@@ -96,7 +109,9 @@ class Link:
         return link
 
     def copy(self) -> "Link":
-        return Link.load(self.save())
+        ret = Link.load(self.save())
+        ret.distance = self.distance
+        return ret
 
 
 class Station:
@@ -126,6 +141,9 @@ class Station:
         return Station(self.name, *self.links)
 
 
+cached_distances: dict[tuple[str], float] = {}
+
+
 class Route:
     def __init__(self, start: Station, goal: str, *links: Link):
         self.links: list[Link] = list(links)
@@ -145,19 +163,32 @@ class Route:
             prev_station = link.to_name
         return True
 
-    def print_test(self, verbose=True):
+    def print_test(self, verbose=True, unmerged=False):
         if verbose:
             print(f"{self} Cost: {self.cost(0)} (Merged cost: {self.merged().cost(0)}) (Valid: {self.is_valid()})")
-            for link in self.links:
-                print(f"\t{link}")
-            print("\nMerged:")
         else:
             print(f"{Fore.BLUE}{Style.BRIGHT}{self.start.name} -> {self.goal}{Style.NORMAL}{Fore.CYAN} | Cost:"
                   f" {self.cost(0)} | Merged: {self.merged().cost(0)}{Style.RESET_ALL}")
         alternate = False
+        if unmerged:
+            for link in self.links:
+                alternate = not alternate
+                try:
+                    distance_text = f"{link.distance/1000:.2f} km"
+                except TypeError:
+                    distance_text = "???"
+                print(f"\t{Fore.GREEN if alternate else Fore.LIGHTGREEN_EX}{link}"
+                      f" {Style.BRIGHT}{Fore.LIGHTYELLOW_EX if alternate else Fore.YELLOW}{distance_text}"
+                      f"{Style.RESET_ALL}")
+            print(f"\n{Fore.LIGHTCYAN_EX}{Style.BRIGHT}Merged:{Style.RESET_ALL}")
         for link in self.merged().links:
             alternate = not alternate
-            print(f"\t{Fore.GREEN if alternate else Fore.LIGHTGREEN_EX}{link}{Style.RESET_ALL}")
+            try:
+                distance_text = f"{link.distance/1000:.2f} km"
+            except TypeError:
+                distance_text = "???"
+            print(f"\t{Fore.GREEN if alternate else Fore.LIGHTGREEN_EX}{link}"
+                  f" {Style.BRIGHT}{Fore.LIGHTYELLOW_EX if alternate else Fore.YELLOW}{distance_text}{Style.RESET_ALL}")
 
     def add_link(self, link: Link) -> "Route":
         if link.to_name in self._traveled_station_names:
@@ -181,9 +212,10 @@ class Route:
         for link in self.links:
             if new_route.links:
                 last_link = new_route.links[-1]
-                if last_link.rail_system == link.rail_system and last_link.rail_line == link.rail_line\
+                if last_link.rail_system == link.rail_system and last_link.rail_line == link.rail_line \
                         and not last_link.is_transfer and not link.is_transfer:
-                    new_route.links[-1].to_name = link.to_name
+                    last_link.to_name = link.to_name
+                    last_link.distance += link.distance
                 else:
                     new_route.links.append(link.copy())
             else:
@@ -209,6 +241,13 @@ class Route:
             previous_line = link.rail_line
         return cost
 
+    def distance_cost(self) -> float:
+        """Calculate the total distance, based on the 3d pythagorean formula distance between the start and end of each link"""
+        cost = 0
+        for link in self.links:
+            cost += link.distance
+        return cost
+
     def __repr__(self) -> str:
         return f"Route [{self.start.name} -> {self.current_end} (Goal: {self.goal})]"
 
@@ -217,7 +256,7 @@ class Route:
 
     def __lt__(self, other):
         if isinstance(other, Route):
-            return self.cost(0) > other.cost(0)
+            return self.distance_cost() > other.distance_cost()
         else:
             raise TypeError(f"< not supported between instances of 'Route' and {other.__class__}")
 
@@ -256,9 +295,9 @@ class StationGraph:
         station traveled
         :param max_iters: if > 0, force stop after `max_iters` iterations
         """
-        for name, stat in self._stations.items():
-            if name != stat.name:
-                raise ValueError(f"Name {name} doesn't match station {stat.name}| {stat}")
+#        for name, stat in self._stations.items():
+#            if name != stat.name:
+#                raise ValueError(f"Name {name} doesn't match station {stat.name}| {stat}")
         if from_name not in self._stations or to_name not in self._stations:
             return []
 
@@ -276,21 +315,24 @@ class StationGraph:
             while True:
                 if 0 < max_iters < iters:
                     break
-                if True:
-                    if strategy == -1:
-                        if (len(solved_routes_list) > 500) or (best_merged_hops <= 3 and len(solved_routes_list) > 5)\
-                                or (len(solved_routes_list) > 0 and time.time()-start > 50)\
-                                or (time.time()-start > 30 and best_merged_hops <= 6):
-                            break
-                    elif strategy == 0:
-                        if len(solved_routes_list) > 0:
-                            break
-                    else:
-                        if len(solved_routes_list) >= strategy:
-                            break
+
+                # Check for exit condition based on strategy
+                if strategy == -1:
+                    if (len(solved_routes_list) > 500) or (best_merged_hops <= 3 and len(solved_routes_list) > 5) \
+                            or (len(solved_routes_list) > 0 and time.time() - start > 50) \
+                            or (time.time() - start > 30 and best_merged_hops <= 6):
+                        break
+                elif strategy == 0:
+                    if len(solved_routes_list) > 0:
+                        break
+                else:
+                    if len(solved_routes_list) >= strategy:
+                        break
+
                 iters += 1
                 if iters % 5000 == 0:
-                    print("Queue size:", route_queue.qsize(), "Solved routes:", len(solved_routes_list), "Iters:", iters)
+                    print("Queue size:", route_queue.qsize(), "Solved routes:", len(solved_routes_list), "Iters:",
+                          iters)
                 try:
                     rt = route_queue.get(block=False)
                 except queue.Empty:
@@ -313,7 +355,8 @@ class StationGraph:
                             continue
                         new_rt = rt.add_link(link)
                         if not new_rt.is_valid():
-                            raise Exception(f"Invalid route built from: {rt}, es: {end_station}, new: {new_rt}, link: {link}")
+                            raise Exception(
+                                f"Invalid route built from: {rt}, es: {end_station}, new: {new_rt}, link: {link}")
                         if new_rt.is_complete():
                             solved_routes_list.append(new_rt)
                             merged_cost = new_rt.merged().cost(0)
@@ -325,13 +368,13 @@ class StationGraph:
                     except ValueError as e:
                         pass  # print(f"Error adding link {link} to route {rt}: {e}")
 
-            print(f"{Style.BRIGHT}{Fore.CYAN}{threading.current_thread().name} exited...")
-
         solver(solved_routes)
 
-        # Koshahood Station -> CXC Station
-        print("Returning...")
+        print(f"{Style.BRIGHT}{Fore.CYAN}Returning...{Style.RESET_ALL}")
+#        first = solved_routes[0]
         solved_routes.sort(key=lambda x: x.cost(change_weight))
+#        if solved_routes[0] != first:
+#            print(f"{Fore.RED}First route changed from {first} to {solved_routes[0]}{Style.RESET_ALL}")
         return solved_routes
 
 

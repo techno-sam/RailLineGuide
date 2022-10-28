@@ -19,12 +19,6 @@
     },
     {
         "from": "AHRAZHUL's Station",
-        "to": "Large Beach Subway Station",
-        "system": "Spawn Subway",
-        "line": "3"
-    },
-    {
-        "from": "AHRAZHUL's Station",
         "to": "Testing Area 2 Subway Station",
         "system": "Spawn Subway",
         "line": "3"
@@ -126,48 +120,6 @@
         "line": "E1"
     },
     {
-        "from": "Anju Crossing Central Station",
-        "to": "Lesnoi North Station",
-        "system": "Local Lines",
-        "line": "S12"
-    },
-    {
-        "from": "Anju Crossing Central Station",
-        "to": "Old Cross Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Anju Crossing Central Station",
-        "to": "Pythagoras Road Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Anju Crossing Central Station",
-        "to": "Schwarzschild Passing Track",
-        "system": "Local Lines",
-        "line": "S12"
-    },
-    {
-        "from": "Anju Crossing Central Station",
-        "to": "Schwarzschild Street Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Anju Crossing Central Station",
-        "to": "Ship Rock Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Anju Crossing Central Station",
-        "to": "Spawn Main Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
         "from": "Apple Grove Station",
         "to": "Apple Plains Subway Station",
         "system": "Spawn Subway",
@@ -242,12 +194,6 @@
     {
         "from": "Archangel Subway Station",
         "to": "University",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Archangel Subway Station",
-        "to": "University Subway Station",
         "system": "Spawn Subway",
         "line": "6"
     },
@@ -474,12 +420,6 @@
         "line": "E4"
     },
     {
-        "from": "Bamboo Maar Station",
-        "to": "Trap City Station",
-        "system": "Express Lines",
-        "line": "E4"
-    },
-    {
         "from": "Bambus Station",
         "to": "Island Station",
         "system": "Express Lines",
@@ -488,12 +428,6 @@
     {
         "from": "Bambus Station",
         "to": "Island Station",
-        "system": "OTL",
-        "line": "Diamond"
-    },
-    {
-        "from": "Bambus Station",
-        "to": "Island Station (Neverbuild)",
         "system": "OTL",
         "line": "Diamond"
     },
@@ -508,12 +442,6 @@
         "to": "Personhood Main Station",
         "system": "OTL",
         "line": "Diamond"
-    },
-    {
-        "from": "Bambus Station",
-        "to": "Personhood Station",
-        "system": "Express Lines",
-        "line": "SM1"
     },
     {
         "from": "Banach Forest Station",
@@ -536,12 +464,6 @@
     {
         "from": "Banach Forest Station",
         "to": "No Idea",
-        "system": "Express Lines",
-        "line": "E32"
-    },
-    {
-        "from": "Banach Forest Station",
-        "to": "No Idea Station",
         "system": "Express Lines",
         "line": "E32"
     },
@@ -600,18 +522,6 @@
         "line": "3"
     },
     {
-        "from": "Banana Forest Station",
-        "to": "Riverside Subway Station",
-        "system": "Spawn Subway",
-        "line": "2"
-    },
-    {
-        "from": "Banana Forest Station",
-        "to": "Riverside Subway Station",
-        "system": "Spawn Subway",
-        "line": "3"
-    },
-    {
         "from": "Banana Junction Station",
         "to": "BL01 Subway Station (Stallmangrad)",
         "system": "Stallmangrad",
@@ -628,18 +538,6 @@
         "to": "CXC Station",
         "system": "Express Lines",
         "line": "HSM"
-    },
-    {
-        "from": "Banana Junction Station",
-        "to": "Stallmangrad Central Station",
-        "system": "Express Lines",
-        "line": "HSM"
-    },
-    {
-        "from": "Banana Junction Station",
-        "to": "Stallmangrad Central Station",
-        "system": "Express Lines",
-        "line": "TUX"
     },
     {
         "from": "Banana Junction Station",
@@ -666,12 +564,6 @@
         "line": "3"
     },
     {
-        "from": "Bananawood Station (Neverbuild)",
-        "to": "Shore Station",
-        "system": "OTL",
-        "line": "Spawn"
-    },
-    {
         "from": "Bananawood Station",
         "to": "Anju Crossing Central",
         "system": "LTBAG",
@@ -691,7 +583,7 @@
     },
     {
         "from": "Bananawood Station",
-        "to": "Shore Station (Neverbuild)",
+        "to": "Shore Station",
         "system": "OTL",
         "line": "Spawn"
     },
@@ -733,29 +625,11 @@
     },
     {
         "from": "Beethoven's Valley Station",
-        "to": "Church Station Station",
-        "system": "Express Lines",
-        "line": "E31"
-    },
-    {
-        "from": "Beethoven's Valley Station",
         "to": "Hippodrome Station",
         "system": "Express Lines",
         "line": "E31"
     },
     {
-        "from": "Berton Street Station",
-        "to": "EVO",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
-        "from": "Berton Street Station",
-        "to": "Ehlodex Station",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
         "from": "Bicycle Shop Station (Personhood)",
         "to": "Kindergarten",
         "system": "Personhood",
@@ -764,18 +638,6 @@
     {
         "from": "Bicycle Shop Station (Personhood)",
         "to": "Kindergarten",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Bicycle Shop Station (Personhood)",
-        "to": "Kindergarten Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Bicycle Shop Station (Personhood)",
-        "to": "Kindergarten Station (Personhood)",
         "system": "Personhood",
         "line": "S16"
     },
@@ -790,12 +652,6 @@
         "to": "Personhood West Station",
         "system": "Personhood",
         "line": "S16"
-    },
-    {
-        "from": "BigFishCity Station",
-        "to": "Sraczka's Village Station",
-        "system": "Express Lines",
-        "line": "E3"
     },
     {
         "from": "BigFishCity Station",
@@ -816,12 +672,6 @@
         "line": "7"
     },
     {
-        "from": "Birch Bay East Subway Station",
-        "to": "North Harbour Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
         "from": "Birch Bay Station",
         "to": "Apple Grove Station",
         "system": "Spawn Subway",
@@ -829,7 +679,7 @@
     },
     {
         "from": "Birch Bay Station",
-        "to": "Large Beach Subway Station",
+        "to": "Large Beach",
         "system": "Birch Bay",
         "line": "beach shuttle"
     },
@@ -1027,12 +877,6 @@
     },
     {
         "from": "Chainsaw Wood Station (Personhood)",
-        "to": "Manaugh Memorial Station (Personhood)",
-        "system": "Personhood",
-        "line": "S14"
-    },
-    {
-        "from": "Chainsaw Wood Station (Personhood)",
         "to": "Nadinetopia Station (Personhood)",
         "system": "Personhood",
         "line": "S14"
@@ -1080,12 +924,6 @@
         "line": "KS"
     },
     {
-        "from": "Chasm of Segfault Subway Station",
-        "to": "Greybush Plains Subway Station",
-        "system": "Spawn Subway",
-        "line": "2"
-    },
-    {
         "from": "Church Station",
         "to": "Beethoven's Valley Station",
         "system": "Express Lines",
@@ -1110,12 +948,6 @@
         "line": "E3"
     },
     {
-        "from": "Church Station Station",
-        "to": "Beethoven's Valley Station",
-        "system": "Express Lines",
-        "line": "E31"
-    },
-    {
         "from": "Church of Emacs Station (Personhood)",
         "to": "Cobble Garden Station (Personhood)",
         "system": "Personhood",
@@ -1136,18 +968,6 @@
     {
         "from": "Church of Emacs Station (Personhood)",
         "to": "Personhood Town Hall Station",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Church of Emacs Station (Personhood)",
-        "to": "Town Hall Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Church of Emacs Station (Personhood)",
-        "to": "Town Hall Station (Personhood)",
         "system": "Personhood",
         "line": "S16"
     },
@@ -1240,12 +1060,6 @@
         "to": "Spawn Main Station",
         "system": "Local Lines",
         "line": "S12"
-    },
-    {
-        "from": "Conway Street Subway Station",
-        "to": "Euler Street Station",
-        "system": "Spawn Subway",
-        "line": "4"
     },
     {
         "from": "Coulomb Street Subway Station",
@@ -1446,28 +1260,22 @@
         "line": "6"
     },
     {
-        "from": "Dodemo-iisk Station (Neverbuild)",
-        "to": "North Harbour Station",
-        "system": "OTL",
-        "line": "Spawn"
-    },
-    {
         "from": "Dodemo-iisk Station",
         "to": "North Harbour Station",
         "system": "Express Lines",
         "line": "E5"
     },
     {
+        "from": "Dodemo-iisk Station",
+        "to": "North Harbour Station",
+        "system": "OTL",
+        "line": "Spawn"
+    },
+    {
         "from": "Dry Island Subway Station",
         "to": "Green Edge Station",
         "system": "South Forest Subway",
         "line": "21"
-    },
-    {
-        "from": "EVO",
-        "to": "Berton Street Station",
-        "system": "Express Lines",
-        "line": "CFE"
     },
     {
         "from": "EVO",
@@ -1495,6 +1303,12 @@
     },
     {
         "from": "EVO",
+        "to": "Origin Berton Street Station",
+        "system": "Express Lines",
+        "line": "CFE"
+    },
+    {
+        "from": "EVO",
         "to": "Perlin River Station",
         "system": "Express Lines",
         "line": "NX"
@@ -1506,25 +1320,19 @@
         "line": "XN"
     },
     {
-        "from": "EVO Station",
-        "to": "Origin Berton Street Station",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
-        "from": "East Origin Subway Station",
+        "from": "East Origin Station",
         "to": "Leekston Station",
         "system": "Spawn Subway",
         "line": "5"
     },
     {
-        "from": "East Origin Subway Station",
+        "from": "East Origin Station",
         "to": "Rockefeller Runway Subway Station",
         "system": "Spawn Subway",
         "line": "5"
     },
     {
-        "from": "East Origin Subway Station",
+        "from": "East Origin Station",
         "to": "Theodor Adorno Street Subway Station",
         "system": "Spawn Subway",
         "line": "5"
@@ -1555,7 +1363,7 @@
     },
     {
         "from": "Edenwood Subway Station",
-        "to": "Erdos Street Subway Station",
+        "to": "Erd\u0151s Street Subway Station",
         "system": "Spawn Subway",
         "line": "5"
     },
@@ -1575,12 +1383,6 @@
         "to": "Theodor Adorno Street Subway Station",
         "system": "Spawn Subway",
         "line": "5"
-    },
-    {
-        "from": "Ehlodex Station",
-        "to": "Berton Street Station",
-        "system": "Express Lines",
-        "line": "CFE"
     },
     {
         "from": "Ehlodex Station",
@@ -1638,6 +1440,12 @@
     },
     {
         "from": "Ehlodex Station",
+        "to": "Origin Berton Street Station",
+        "system": "Express Lines",
+        "line": "CFE"
+    },
+    {
+        "from": "Ehlodex Station",
         "to": "Perlin River Station",
         "system": "Express Lines",
         "line": "NX"
@@ -1657,17 +1465,17 @@
     {
         "from": "Ehlodex Station",
         "to": "Silver Coast Central Station",
-        "system": "Local Lines",
-        "line": "S12"
-    },
-    {
-        "from": "Ehlodex Station",
-        "to": "Silver Coast Station",
         "system": "ATL",
         "line": "Mithril"
     },
     {
         "from": "Ehlodex Station",
+        "to": "Silver Coast Central Station",
+        "system": "Local Lines",
+        "line": "S12"
+    },
+    {
+        "from": "Ehlodex Station",
         "to": "The Cube",
         "system": "Express Lines",
         "line": "CFE"
@@ -1675,18 +1483,6 @@
     {
         "from": "Ehlodex Station",
         "to": "The Cube",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Ehlodex Station",
-        "to": "The Cube Station",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
-        "from": "Ehlodex Station",
-        "to": "The Cube Station",
         "system": "Express Lines",
         "line": "E1"
     },
@@ -1741,12 +1537,6 @@
     {
         "from": "Elders Valley Beach Station",
         "to": "Elders Valley Station",
-        "system": "Trisiston",
-        "line": "S31"
-    },
-    {
-        "from": "Elders Valley North West Station (Trisiston)",
-        "to": "Trisiston Station",
         "system": "Trisiston",
         "line": "S31"
     },
@@ -1811,34 +1601,34 @@
         "line": "NX"
     },
     {
-        "from": "Erdos Street Subway Station",
+        "from": "Erd\u0151s Street Subway Station",
+        "to": "Babbage Road Subway Station",
+        "system": "Spawn Subway",
+        "line": "1"
+    },
+    {
+        "from": "Erd\u0151s Street Subway Station",
+        "to": "Babbage Road Subway Station",
+        "system": "Spawn Subway",
+        "line": "4"
+    },
+    {
+        "from": "Erd\u0151s Street Subway Station",
+        "to": "Cow Bridge Subway Station",
+        "system": "Spawn Subway",
+        "line": "1"
+    },
+    {
+        "from": "Erd\u0151s Street Subway Station",
+        "to": "Cow Bridge Subway Station",
+        "system": "Spawn Subway",
+        "line": "4"
+    },
+    {
+        "from": "Erd\u0151s Street Subway Station",
         "to": "Edenwood Subway Station",
         "system": "Spawn Subway",
         "line": "5"
-    },
-    {
-        "from": "Erd\u0151s Street Subway Station",
-        "to": "Babbage Road Subway Station",
-        "system": "Spawn Subway",
-        "line": "1"
-    },
-    {
-        "from": "Erd\u0151s Street Subway Station",
-        "to": "Babbage Road Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
-        "from": "Erd\u0151s Street Subway Station",
-        "to": "Cow Bridge Subway Station",
-        "system": "Spawn Subway",
-        "line": "1"
-    },
-    {
-        "from": "Erd\u0151s Street Subway Station",
-        "to": "Cow Bridge Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
     },
     {
         "from": "Eternal Ice Subway Station",
@@ -1854,15 +1644,15 @@
     },
     {
         "from": "Euler Street Station",
-        "to": "Conway Street Subway Station",
+        "to": "Half-Mile Island Subway Station",
         "system": "Spawn Subway",
-        "line": "4"
+        "line": "6"
     },
     {
         "from": "Euler Street Station",
-        "to": "Half Mile Island Subway Station",
+        "to": "John Horton Conway Street Subway Station",
         "system": "Spawn Subway",
-        "line": "6"
+        "line": "4"
     },
     {
         "from": "Euler Street Station",
@@ -1902,30 +1692,6 @@
     },
     {
         "from": "Euler Street Station",
-        "to": "Zoo Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Euler Street Subway Station",
-        "to": "Half-Mile Island Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Euler Street Subway Station",
-        "to": "John Horton Conway Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
-        "from": "Euler Street Subway Station",
-        "to": "Market Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
-        "from": "Euler Street Subway Station",
         "to": "Zoo Subway Station",
         "system": "Spawn Subway",
         "line": "6"
@@ -2033,12 +1799,6 @@
         "line": "E3"
     },
     {
-        "from": "Garden of EdenFerry  Station",
-        "to": "Shanielle Inlet Station",
-        "system": "Eden Ferries",
-        "line": "1"
-    },
-    {
         "from": "Gardon Street Station",
         "to": "Ehlodex Station",
         "system": "Local Lines",
@@ -2100,6 +1860,12 @@
     },
     {
         "from": "Gpersonhood Station",
+        "to": "Iceberg on Bamboo Station",
+        "system": "Express Lines",
+        "line": "E3"
+    },
+    {
+        "from": "Gpersonhood Station",
         "to": "Lambda Bay Station",
         "system": "Express Lines",
         "line": "E3"
@@ -2113,12 +1879,6 @@
     {
         "from": "Gram-Schmidt Street Subway Station",
         "to": "Lighthouse Station",
-        "system": "Spawn Subway",
-        "line": "5"
-    },
-    {
-        "from": "Gram-Schmidt Street Subway Station",
-        "to": "Lighthouse Subway Station",
         "system": "Spawn Subway",
         "line": "5"
     },
@@ -2207,12 +1967,6 @@
         "line": "4"
     },
     {
-        "from": "Green Hope Subway Station",
-        "to": "Water Pyramid Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
         "from": "Greener Pastures Station",
         "to": "Crossroads Smacker's Station",
         "system": "Express Lines",
@@ -2238,12 +1992,6 @@
     },
     {
         "from": "Greybush Plains Subway Station",
-        "to": "Chasm of Segfault Subway Station",
-        "system": "Spawn Subway",
-        "line": "2"
-    },
-    {
-        "from": "Greybush Plains Subway Station",
         "to": "Onionland Subway Station",
         "system": "Spawn Subway",
         "line": "2"
@@ -2261,12 +2009,6 @@
         "line": "CFE"
     },
     {
-        "from": "Half Mile Island Subway Station",
-        "to": "Euler Street Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
         "from": "Half-Mile Island Subway Station",
         "to": "Darwin Road Subway Station",
         "system": "Spawn Subway",
@@ -2274,7 +2016,7 @@
     },
     {
         "from": "Half-Mile Island Subway Station",
-        "to": "Euler Street Subway Station",
+        "to": "Euler Street Station",
         "system": "Spawn Subway",
         "line": "6"
     },
@@ -2287,12 +2029,6 @@
     {
         "from": "Half-Mile Island Subway Station",
         "to": "Perelman Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Half-mile Island Subway Station",
-        "to": "Museum Subway Station",
         "system": "Spawn Subway",
         "line": "7"
     },
@@ -2465,15 +2201,15 @@
     },
     {
         "from": "Iceberg on Bamboo Station",
-        "to": "H\u00fchnerkopf Station (Trisiston)",
-        "system": "Trisiston",
-        "line": "S31"
+        "to": "Gpersonhood Station",
+        "system": "Express Lines",
+        "line": "E3"
     },
     {
         "from": "Iceberg on Bamboo Station",
-        "to": "Quantum Farm Station",
-        "system": "Express Lines",
-        "line": "E3"
+        "to": "H\u00fchnerkopf Station (Trisiston)",
+        "system": "Trisiston",
+        "line": "S31"
     },
     {
         "from": "Iceberg on Bamboo Station",
@@ -2492,48 +2228,6 @@
         "to": "Stallmangrad Main Station",
         "system": "Stallmangrad",
         "line": "Yellow"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Bambus Station",
-        "system": "OTL",
-        "line": "Diamond"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Neverbuild Station",
-        "system": "OTL",
-        "line": "Diamond"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Neverbuild Station",
-        "system": "OTL",
-        "line": "Ice"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Neverbuild Station",
-        "system": "OTL",
-        "line": "Mithril"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Neverbuild Station",
-        "system": "OTL",
-        "line": "Ring"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Neverbuild Station",
-        "system": "OTL",
-        "line": "Spawn"
-    },
-    {
-        "from": "Island Station (Neverbuild)",
-        "to": "Neverbuild West Station",
-        "system": "OTL",
-        "line": "Express"
     },
     {
         "from": "Island Station",
@@ -2569,6 +2263,18 @@
         "from": "Island Station",
         "to": "Neverbuild Station",
         "system": "OTL",
+        "line": "Mithril"
+    },
+    {
+        "from": "Island Station",
+        "to": "Neverbuild Station",
+        "system": "OTL",
+        "line": "Ring"
+    },
+    {
+        "from": "Island Station",
+        "to": "Neverbuild Station",
+        "system": "OTL",
         "line": "Spawn"
     },
     {
@@ -2578,22 +2284,10 @@
         "line": "Express"
     },
     {
-        "from": "John Conway Street Subway Station",
-        "to": "Spawn Library Station",
-        "system": "Spawn Subway",
-        "line": "5"
-    },
-    {
         "from": "John Horton Conway Street Subway Station",
-        "to": "Euler Street Subway Station",
+        "to": "Euler Street Station",
         "system": "Spawn Subway",
         "line": "4"
-    },
-    {
-        "from": "John Horton Conway Street Subway Station",
-        "to": "Library Subway Station",
-        "system": "Spawn Subway",
-        "line": "5"
     },
     {
         "from": "John Horton Conway Street Subway Station",
@@ -2606,6 +2300,12 @@
         "to": "Mountain View Subway Station",
         "system": "Spawn Subway",
         "line": "4"
+    },
+    {
+        "from": "John Horton Conway Street Subway Station",
+        "to": "Spawn Library Station",
+        "system": "Spawn Subway",
+        "line": "5"
     },
     {
         "from": "Jude Milhon Street Subway Station",
@@ -2663,36 +2363,12 @@
     },
     {
         "from": "Kindergarten",
-        "to": "Och Noe's Lake Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Kindergarten",
-        "to": "Och Noe's Lake Station (Personhood)",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Kindergarten Station (Personhood)",
-        "to": "Bicycle Shop Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Kindergarten Station (Personhood)",
-        "to": "Bicycle Shop Station (Personhood)",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Kindergarten Station (Personhood)",
         "to": "Och Noe's Lake",
         "system": "Personhood",
         "line": "S15"
     },
     {
-        "from": "Kindergarten Station (Personhood)",
+        "from": "Kindergarten",
         "to": "Och Noe's Lake",
         "system": "Personhood",
         "line": "S16"
@@ -2752,18 +2428,6 @@
         "line": "XN"
     },
     {
-        "from": "Koshahood Station",
-        "to": "Szymon's Dam Station",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
-        "from": "Koshahood Station",
-        "to": "Szymon's Dam Station",
-        "system": "Express Lines",
-        "line": "XN"
-    },
-    {
         "from": "Lambda Bay Station",
         "to": "Church Station",
         "system": "Express Lines",
@@ -2772,12 +2436,6 @@
     {
         "from": "Lambda Bay Station",
         "to": "Gpersonhood Station",
-        "system": "Express Lines",
-        "line": "E3"
-    },
-    {
-        "from": "Lambda Bay Station",
-        "to": "Quantum Farm Station",
         "system": "Express Lines",
         "line": "E3"
     },
@@ -2800,12 +2458,6 @@
         "line": "7"
     },
     {
-        "from": "Land's End (West) Station",
-        "to": "Spawn Main Station",
-        "system": "Express Lines",
-        "line": "E2"
-    },
-    {
         "from": "Land's End West Station",
         "to": "Spawn Main Station",
         "system": "Express Lines",
@@ -2813,7 +2465,7 @@
     },
     {
         "from": "Land's End West Station",
-        "to": "Valley of Pharoah Station",
+        "to": "Valley of Pharoah",
         "system": "Express Lines",
         "line": "E2"
     },
@@ -2824,13 +2476,7 @@
         "line": "3"
     },
     {
-        "from": "Large Beach Subway Station",
-        "to": "AHRAZHUL's Station",
-        "system": "Spawn Subway",
-        "line": "3"
-    },
-    {
-        "from": "Large Beach Subway Station",
+        "from": "Large Beach",
         "to": "Birch Bay Station",
         "system": "Birch Bay",
         "line": "beach shuttle"
@@ -2866,12 +2512,6 @@
         "line": "S23"
     },
     {
-        "from": "Laza's Field Station",
-        "to": "No Idea Station",
-        "system": "Local Lines",
-        "line": "S23"
-    },
-    {
         "from": "Leekston East Station",
         "to": "Leekston Ferry Station",
         "system": "Spawn Subway",
@@ -2900,12 +2540,6 @@
         "to": "Szymon's Dam",
         "system": "Express Lines",
         "line": "XN"
-    },
-    {
-        "from": "Leekston East Station",
-        "to": "Szymon's Dam Station",
-        "system": "Express Lines",
-        "line": "NX"
     },
     {
         "from": "Leekston Ferry Station",
@@ -2939,7 +2573,7 @@
     },
     {
         "from": "Leekston Station",
-        "to": "East Origin Subway Station",
+        "to": "East Origin Station",
         "system": "Spawn Subway",
         "line": "5"
     },
@@ -2962,12 +2596,6 @@
         "line": "3"
     },
     {
-        "from": "Leonhard Street Subway Station",
-        "to": "Riverside Subway Station",
-        "system": "Spawn Subway",
-        "line": "3"
-    },
-    {
         "from": "Lesnoi Industrial Area Subway Station",
         "to": "Redwood Forest Subway Station",
         "system": "Spawn Subway",
@@ -2982,12 +2610,6 @@
     {
         "from": "Lesnoi North Station",
         "to": "Anju Crossing Central",
-        "system": "Local Lines",
-        "line": "S12"
-    },
-    {
-        "from": "Lesnoi North Station",
-        "to": "Anju Crossing Central Station",
         "system": "Local Lines",
         "line": "S12"
     },
@@ -3022,24 +2644,6 @@
         "line": "4"
     },
     {
-        "from": "Library Subway Station",
-        "to": "John Horton Conway Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "5"
-    },
-    {
-        "from": "Library Subway Station",
-        "to": "Tom Lehrer Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "5"
-    },
-    {
-        "from": "Library Subway Station",
-        "to": "Zoo Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
         "from": "Lighthouse Station",
         "to": "Gram-Schmidt Street Subway Station",
         "system": "Spawn Subway",
@@ -3064,12 +2668,6 @@
         "line": "56"
     },
     {
-        "from": "Lighthouse Subway Station",
-        "to": "Gram-Schmidt Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "5"
-    },
-    {
         "from": "Lusin Street Station",
         "to": "Ehlodex Station",
         "system": "Express Lines",
@@ -3084,12 +2682,6 @@
     {
         "from": "Lusin Street Station",
         "to": "The Cube",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
-        "from": "Lusin Street Station",
-        "to": "The Cube Station",
         "system": "Express Lines",
         "line": "NX"
     },
@@ -3110,12 +2702,6 @@
         "to": "Crystal Farms Station",
         "system": "Express Lines",
         "line": "CFE"
-    },
-    {
-        "from": "Manaugh Memorial Station (Personhood)",
-        "to": "Chainsaw Wood Station (Personhood)",
-        "system": "Personhood",
-        "line": "S14"
     },
     {
         "from": "Manaugh Memorial Station",
@@ -3160,18 +2746,6 @@
         "line": "S15"
     },
     {
-        "from": "Marcus Street Station",
-        "to": "Spawn Main Station",
-        "system": "Express Lines",
-        "line": "E2"
-    },
-    {
-        "from": "Marcuse Street Station (Origin Ring Lines)",
-        "to": "Watson-Crick Street Subway Station",
-        "system": "Origin Ring Lines",
-        "line": "1"
-    },
-    {
         "from": "Marcuse Street Station",
         "to": "42069 Mountain Station",
         "system": "Express Lines",
@@ -3209,19 +2783,13 @@
     },
     {
         "from": "Marcuse Street Station",
-        "to": "Watson-Crick Street Station (Origin Ring Lines)",
+        "to": "Watson-Crick Street Subway Station",
         "system": "Origin Ring Lines",
         "line": "1"
     },
     {
         "from": "Market Subway Station",
         "to": "Euler Street Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
-        "from": "Market Subway Station",
-        "to": "Euler Street Subway Station",
         "system": "Spawn Subway",
         "line": "4"
     },
@@ -3310,12 +2878,6 @@
         "line": "4"
     },
     {
-        "from": "McFly Street Subway Station",
-        "to": "Schwarzschild Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
         "from": "Melinka Town Station",
         "to": "Musa Island Station",
         "system": "Express Lines",
@@ -3346,7 +2908,7 @@
         "line": "SMR"
     },
     {
-        "from": "Memorial Mountain Station",
+        "from": "Memorial Mountain",
         "to": "No Idea",
         "system": "Express Lines",
         "line": "E32"
@@ -3377,7 +2939,7 @@
     },
     {
         "from": "Midway Cliff Station",
-        "to": "Stallmangrad Central Station",
+        "to": "Stallmangrad Main Station",
         "system": "Express Lines",
         "line": "SM1"
     },
@@ -3460,12 +3022,6 @@
         "line": "7"
     },
     {
-        "from": "Mirzakhani Street Subway Station",
-        "to": "Planetarium Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
         "from": "Mom Junction",
         "to": "Mountain South Station",
         "system": "Express Lines",
@@ -3497,36 +3053,6 @@
     },
     {
         "from": "Mom Junction",
-        "to": "Redwood Island Station",
-        "system": "Local Lines",
-        "line": "MOM"
-    },
-    {
-        "from": "Mom Junction Station",
-        "to": "Mountain South Station",
-        "system": "Express Lines",
-        "line": "E10"
-    },
-    {
-        "from": "Mom Junction Station",
-        "to": "Mountain South Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Mom Junction Station",
-        "to": "Padrana Peninsula Station",
-        "system": "Express Lines",
-        "line": "E10"
-    },
-    {
-        "from": "Mom Junction Station",
-        "to": "Padrana Peninsula Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Mom Junction Station",
         "to": "Redwood Island Station",
         "system": "Local Lines",
         "line": "MOM"
@@ -3653,18 +3179,6 @@
     },
     {
         "from": "Mountain South Station",
-        "to": "Mom Junction Station",
-        "system": "Express Lines",
-        "line": "E10"
-    },
-    {
-        "from": "Mountain South Station",
-        "to": "Mom Junction Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Mountain South Station",
         "to": "Spawn Main Station",
         "system": "Express Lines",
         "line": "E1"
@@ -3725,12 +3239,6 @@
     },
     {
         "from": "Museum Subway Station",
-        "to": "Half-mile Island Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Museum Subway Station",
         "to": "Haskell Curry Street Subway Station",
         "system": "Spawn Subway",
         "line": "7"
@@ -3748,12 +3256,6 @@
         "line": "2"
     },
     {
-        "from": "Museum Subway Station",
-        "to": "Riverside Subway Station",
-        "system": "Spawn Subway",
-        "line": "2"
-    },
-    {
         "from": "Mushroom Coast Station",
         "to": "Collis Hills Station",
         "system": "Veaca",
@@ -3766,7 +3268,7 @@
         "line": "Kerbin"
     },
     {
-        "from": "Mushroom Hill Station (Neverbuild)",
+        "from": "Mushroom Hill Station (Personhood)",
         "to": "Shore Station",
         "system": "OTL",
         "line": "Bronze"
@@ -3841,35 +3343,17 @@
         "from": "Neverbuild Station",
         "to": "Island Station",
         "system": "OTL",
-        "line": "Spawn"
-    },
-    {
-        "from": "Neverbuild Station",
-        "to": "Island Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Diamond"
-    },
-    {
-        "from": "Neverbuild Station",
-        "to": "Island Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Ice"
-    },
-    {
-        "from": "Neverbuild Station",
-        "to": "Island Station (Neverbuild)",
-        "system": "OTL",
         "line": "Mithril"
     },
     {
         "from": "Neverbuild Station",
-        "to": "Island Station (Neverbuild)",
+        "to": "Island Station",
         "system": "OTL",
         "line": "Ring"
     },
     {
         "from": "Neverbuild Station",
-        "to": "Island Station (Neverbuild)",
+        "to": "Island Station",
         "system": "OTL",
         "line": "Spawn"
     },
@@ -3911,12 +3395,6 @@
     },
     {
         "from": "Neverbuild West Station",
-        "to": "Island Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Express"
-    },
-    {
-        "from": "Neverbuild West Station",
         "to": "Neverbuild Station",
         "system": "OTL",
         "line": "Diamond"
@@ -3959,18 +3437,6 @@
     },
     {
         "from": "Neverbuild West Station",
-        "to": "Shore Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Express"
-    },
-    {
-        "from": "Neverbuild West Station",
-        "to": "Shore Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Spawn"
-    },
-    {
-        "from": "Neverbuild West Station",
         "to": "The Cube Valley Station (Neverbuild)",
         "system": "OTL",
         "line": "Bronze"
@@ -4007,30 +3473,12 @@
     },
     {
         "from": "No Idea",
-        "to": "Memorial Mountain Station",
+        "to": "Memorial Mountain",
         "system": "Express Lines",
         "line": "E32"
     },
     {
         "from": "No Idea",
-        "to": "Tanh Cliffs Station",
-        "system": "Local Lines",
-        "line": "S23"
-    },
-    {
-        "from": "No Idea Station",
-        "to": "Banach Forest Station",
-        "system": "Express Lines",
-        "line": "E32"
-    },
-    {
-        "from": "No Idea Station",
-        "to": "Laza's Field Station",
-        "system": "Local Lines",
-        "line": "S23"
-    },
-    {
-        "from": "No Idea Station",
         "to": "Tanh Cliffs Station",
         "system": "Local Lines",
         "line": "S23"
@@ -4049,7 +3497,7 @@
     },
     {
         "from": "North Harbour Station",
-        "to": "Dodemo-iisk Station (Neverbuild)",
+        "to": "Dodemo-iisk Station",
         "system": "OTL",
         "line": "Spawn"
     },
@@ -4067,7 +3515,7 @@
     },
     {
         "from": "North Harbour Station",
-        "to": "Proletarian Station (Neverbuild)",
+        "to": "Proletarian Station",
         "system": "OTL",
         "line": "Spawn"
     },
@@ -4091,30 +3539,6 @@
     },
     {
         "from": "North Harbour Station",
-        "to": "Volcano Cliffs Subway Station",
-        "system": "Spawn Subway",
-        "line": "1"
-    },
-    {
-        "from": "North Harbour Subway Station",
-        "to": "Birch Bay East Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "North Harbour Subway Station",
-        "to": "Pythagoras Road Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "North Harbour Subway Station",
-        "to": "Stone Beach Subway Station",
-        "system": "Spawn Subway",
-        "line": "1"
-    },
-    {
-        "from": "North Harbour Subway Station",
         "to": "Volcano Cliffs Subway Station",
         "system": "Spawn Subway",
         "line": "1"
@@ -4163,48 +3587,24 @@
     },
     {
         "from": "Och Noe's Lake",
-        "to": "Kindergarten Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Och Noe's Lake",
-        "to": "Kindergarten Station (Personhood)",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Och Noe's Lake",
-        "to": "Town Hall Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Och Noe's Lake",
-        "to": "Town Hall Station (Personhood)",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Och Noe's Lake Station (Personhood)",
         "to": "Kindergarten",
         "system": "Personhood",
         "line": "S15"
     },
     {
-        "from": "Och Noe's Lake Station (Personhood)",
+        "from": "Och Noe's Lake",
         "to": "Kindergarten",
         "system": "Personhood",
         "line": "S16"
     },
     {
-        "from": "Och Noe's Lake Station (Personhood)",
+        "from": "Och Noe's Lake",
         "to": "Personhood Town Hall Station",
         "system": "Personhood",
         "line": "S15"
     },
     {
-        "from": "Och Noe's Lake Station (Personhood)",
+        "from": "Och Noe's Lake",
         "to": "Personhood Town Hall Station",
         "system": "Personhood",
         "line": "S16"
@@ -4212,12 +3612,6 @@
     {
         "from": "Old Cross Subway Station",
         "to": "Anju Crossing Central",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Old Cross Subway Station",
-        "to": "Anju Crossing Central Station",
         "system": "Spawn Subway",
         "line": "6"
     },
@@ -4289,7 +3683,13 @@
     },
     {
         "from": "Origin Berton Street Station",
-        "to": "EVO Station",
+        "to": "EVO",
+        "system": "Express Lines",
+        "line": "CFE"
+    },
+    {
+        "from": "Origin Berton Street Station",
+        "to": "Ehlodex Station",
         "system": "Express Lines",
         "line": "CFE"
     },
@@ -4440,18 +3840,6 @@
     {
         "from": "Padrana Peninsula Station",
         "to": "Mom Junction",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Padrana Peninsula Station",
-        "to": "Mom Junction Station",
-        "system": "Express Lines",
-        "line": "E10"
-    },
-    {
-        "from": "Padrana Peninsula Station",
-        "to": "Mom Junction Station",
         "system": "Express Lines",
         "line": "E1"
     },
@@ -4649,12 +4037,6 @@
     },
     {
         "from": "Personhood South Station",
-        "to": "Personhood Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Personhood South Station",
         "to": "Phawksden Station (Personhood)",
         "system": "Personhood",
         "line": "S14"
@@ -4662,24 +4044,6 @@
     {
         "from": "Personhood South Station",
         "to": "The Cube",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Personhood South Station",
-        "to": "The Cube Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Personhood Station",
-        "to": "Bambus Station",
-        "system": "Express Lines",
-        "line": "SM1"
-    },
-    {
-        "from": "Personhood Station",
-        "to": "Personhood South Station",
         "system": "Express Lines",
         "line": "E1"
     },
@@ -4697,13 +4061,13 @@
     },
     {
         "from": "Personhood Town Hall Station",
-        "to": "Och Noe's Lake Station (Personhood)",
+        "to": "Och Noe's Lake",
         "system": "Personhood",
         "line": "S15"
     },
     {
         "from": "Personhood Town Hall Station",
-        "to": "Och Noe's Lake Station (Personhood)",
+        "to": "Och Noe's Lake",
         "system": "Personhood",
         "line": "S16"
     },
@@ -4774,18 +4138,6 @@
         "line": "NX"
     },
     {
-        "from": "Personhood West Station",
-        "to": "The Cube Station",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
-        "from": "Personhood West Station",
-        "to": "The Cube Station",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
         "from": "Phawksden Station (Personhood)",
         "to": "Personhood Main Station",
         "system": "Personhood",
@@ -4817,21 +4169,9 @@
     },
     {
         "from": "Piet Station (Neverbuild)",
-        "to": "The Cube Station",
-        "system": "OTL",
-        "line": "Mithril"
-    },
-    {
-        "from": "Piet Station (Neverbuild)",
         "to": "The Cube Valley Station (Neverbuild)",
         "system": "OTL",
         "line": "Mithril"
-    },
-    {
-        "from": "Planetarium Subway Station",
-        "to": "Mirzakhani Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
     },
     {
         "from": "Plantain Hills Station",
@@ -4864,22 +4204,22 @@
         "line": "NX"
     },
     {
-        "from": "Proletarian Station (Neverbuild)",
+        "from": "Proletarian Station",
         "to": "North Harbour Station",
-        "system": "OTL",
-        "line": "Spawn"
+        "system": "Express Lines",
+        "line": "E5"
     },
     {
-        "from": "Proletarian Station (Neverbuild)",
-        "to": "Spawn Main Station (underground)",
+        "from": "Proletarian Station",
+        "to": "North Harbour Station",
         "system": "OTL",
         "line": "Spawn"
     },
     {
         "from": "Proletarian Station",
-        "to": "North Harbour Station",
-        "system": "Express Lines",
-        "line": "E5"
+        "to": "Spawn Main Station (underground)",
+        "system": "OTL",
+        "line": "Spawn"
     },
     {
         "from": "Public Farms Station (Trisiston)",
@@ -4907,33 +4247,9 @@
     },
     {
         "from": "Pythagoras Road Subway Station",
-        "to": "Anju Crossing Central Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Pythagoras Road Subway Station",
         "to": "North Harbour Station",
         "system": "Spawn Subway",
         "line": "7"
-    },
-    {
-        "from": "Pythagoras Road Subway Station",
-        "to": "North Harbour Subway Station",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Quantum Farm Station",
-        "to": "Iceberg on Bamboo Station",
-        "system": "Express Lines",
-        "line": "E3"
-    },
-    {
-        "from": "Quantum Farm Station",
-        "to": "Lambda Bay Station",
-        "system": "Express Lines",
-        "line": "E3"
     },
     {
         "from": "RL04 Subway Station (Stallmangrad)",
@@ -5004,12 +4320,6 @@
     {
         "from": "Redwood Island Station",
         "to": "Mom Junction",
-        "system": "Local Lines",
-        "line": "MOM"
-    },
-    {
-        "from": "Redwood Island Station",
-        "to": "Mom Junction Station",
         "system": "Local Lines",
         "line": "MOM"
     },
@@ -5110,42 +4420,6 @@
         "line": "6"
     },
     {
-        "from": "Riverside Subway Station",
-        "to": "Banana Forest Station",
-        "system": "Spawn Subway",
-        "line": "2"
-    },
-    {
-        "from": "Riverside Subway Station",
-        "to": "Banana Forest Station",
-        "system": "Spawn Subway",
-        "line": "3"
-    },
-    {
-        "from": "Riverside Subway Station",
-        "to": "Leonhard Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "3"
-    },
-    {
-        "from": "Riverside Subway Station",
-        "to": "Museum Subway Station",
-        "system": "Spawn Subway",
-        "line": "2"
-    },
-    {
-        "from": "Riverside Subway Station",
-        "to": "Swimming Rabbit Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Riverside Subway Station",
-        "to": "Yoshi Island Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
         "from": "Robert Koch Boulevard Subway Station",
         "to": "Booze Grove Subway Station",
         "system": "Spawn Subway",
@@ -5177,7 +4451,7 @@
     },
     {
         "from": "Rockefeller Runway Subway Station",
-        "to": "East Origin Subway Station",
+        "to": "East Origin Station",
         "system": "Spawn Subway",
         "line": "5"
     },
@@ -5285,12 +4559,6 @@
     },
     {
         "from": "Schwarzschild Passing Track",
-        "to": "Anju Crossing Central Station",
-        "system": "Local Lines",
-        "line": "S12"
-    },
-    {
-        "from": "Schwarzschild Passing Track",
         "to": "Schwarzschild Street Station",
         "system": "Local Lines",
         "line": "S12"
@@ -5298,12 +4566,6 @@
     {
         "from": "Schwarzschild Street Station",
         "to": "Anju Crossing Central",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Schwarzschild Street Station",
-        "to": "Anju Crossing Central Station",
         "system": "Express Lines",
         "line": "E1"
     },
@@ -5330,12 +4592,6 @@
         "to": "Schwarzschild Passing Track",
         "system": "Local Lines",
         "line": "S12"
-    },
-    {
-        "from": "Schwarzschild Street Subway Station",
-        "to": "McFly Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "4"
     },
     {
         "from": "Sentinel Cliffs Subway Station (Stallmangrad)",
@@ -5387,12 +4643,6 @@
     },
     {
         "from": "Shanielle Inlet Station",
-        "to": "Garden of EdenFerry  Station",
-        "system": "Eden Ferries",
-        "line": "1"
-    },
-    {
-        "from": "Shanielle Inlet Station",
         "to": "Wolf Rock Station",
         "system": "Express Lines",
         "line": "E3"
@@ -5424,12 +4674,6 @@
     {
         "from": "Ship Rock Subway Station",
         "to": "Anju Crossing Central",
-        "system": "Spawn Subway",
-        "line": "7"
-    },
-    {
-        "from": "Ship Rock Subway Station",
-        "to": "Anju Crossing Central Station",
         "system": "Spawn Subway",
         "line": "7"
     },
@@ -5481,26 +4725,8 @@
         "is_transfer": true
     },
     {
-        "from": "Shore Station (Neverbuild)",
-        "to": "Bananawood Station",
-        "system": "OTL",
-        "line": "Spawn"
-    },
-    {
-        "from": "Shore Station (Neverbuild)",
-        "to": "Neverbuild West Station",
-        "system": "OTL",
-        "line": "Express"
-    },
-    {
-        "from": "Shore Station (Neverbuild)",
-        "to": "Neverbuild West Station",
-        "system": "OTL",
-        "line": "Spawn"
-    },
-    {
         "from": "Shore Station",
-        "to": "Bananawood Station (Neverbuild)",
+        "to": "Bananawood Station",
         "system": "OTL",
         "line": "Spawn"
     },
@@ -5512,7 +4738,7 @@
     },
     {
         "from": "Shore Station",
-        "to": "Mushroom Hill Station (Neverbuild)",
+        "to": "Mushroom Hill Station (Personhood)",
         "system": "OTL",
         "line": "Bronze"
     },
@@ -5578,6 +4804,12 @@
     {
         "from": "Silver Coast Central Station",
         "to": "Ehlodex Station",
+        "system": "ATL",
+        "line": "Mithril"
+    },
+    {
+        "from": "Silver Coast Central Station",
+        "to": "Ehlodex Station",
         "system": "Local Lines",
         "line": "S12"
     },
@@ -5586,12 +4818,6 @@
         "to": "To Be Decided Station",
         "system": "DTL",
         "line": "E1"
-    },
-    {
-        "from": "Silver Coast Station",
-        "to": "Ehlodex Station",
-        "system": "ATL",
-        "line": "Mithril"
     },
     {
         "from": "Sinensis Plains Station",
@@ -5781,7 +5007,7 @@
     },
     {
         "from": "Spawn Library Station",
-        "to": "John Conway Street Subway Station",
+        "to": "John Horton Conway Street Subway Station",
         "system": "Spawn Subway",
         "line": "5"
     },
@@ -5835,7 +5061,7 @@
     },
     {
         "from": "Spawn Main Station (underground)",
-        "to": "Proletarian Station (Neverbuild)",
+        "to": "Proletarian Station",
         "system": "OTL",
         "line": "Spawn"
     },
@@ -5853,12 +5079,6 @@
     },
     {
         "from": "Spawn Main Station",
-        "to": "Anju Crossing Central Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "Spawn Main Station",
         "to": "Cathedral Subway Station",
         "system": "Spawn Subway",
         "line": "2"
@@ -5871,19 +5091,7 @@
     },
     {
         "from": "Spawn Main Station",
-        "to": "Land's End (West) Station",
-        "system": "Express Lines",
-        "line": "E2"
-    },
-    {
-        "from": "Spawn Main Station",
         "to": "Land's End West Station",
-        "system": "Express Lines",
-        "line": "E2"
-    },
-    {
-        "from": "Spawn Main Station",
-        "to": "Marcus Street Station",
         "system": "Express Lines",
         "line": "E2"
     },
@@ -5960,18 +5168,6 @@
         "line": "2"
     },
     {
-        "from": "Sraczka's Village Station",
-        "to": "BigFishCity Station",
-        "system": "Express Lines",
-        "line": "E3"
-    },
-    {
-        "from": "Sraczka's Village Station",
-        "to": "Trisiston Station",
-        "system": "Express Lines",
-        "line": "E3"
-    },
-    {
         "from": "Sraczka2's Village Station",
         "to": "BigFishCity Station",
         "system": "Express Lines",
@@ -6006,24 +5202,6 @@
         "to": "Smith Street Subway Station",
         "system": "Spawn Subway",
         "line": "8"
-    },
-    {
-        "from": "Stallmangrad Central Station",
-        "to": "Banana Junction Station",
-        "system": "Express Lines",
-        "line": "HSM"
-    },
-    {
-        "from": "Stallmangrad Central Station",
-        "to": "Banana Junction Station",
-        "system": "Express Lines",
-        "line": "TUX"
-    },
-    {
-        "from": "Stallmangrad Central Station",
-        "to": "Midway Cliff Station",
-        "system": "Express Lines",
-        "line": "SM1"
     },
     {
         "from": "Stallmangrad Main Station",
@@ -6069,6 +5247,12 @@
     },
     {
         "from": "Stallmangrad Main Station",
+        "to": "Midway Cliff Station",
+        "system": "Express Lines",
+        "line": "SM1"
+    },
+    {
+        "from": "Stallmangrad Main Station",
         "to": "RL04 Subway Station (Stallmangrad)",
         "system": "Stallmangrad",
         "line": "Red"
@@ -6104,12 +5288,6 @@
         "line": "1"
     },
     {
-        "from": "Stone Beach Subway Station",
-        "to": "North Harbour Subway Station",
-        "system": "Spawn Subway",
-        "line": "1"
-    },
-    {
         "from": "Suburb Station (Origin Ring Lines)",
         "to": "Babbage Road Subway Station",
         "system": "Origin Ring Lines",
@@ -6141,19 +5319,7 @@
     },
     {
         "from": "Swimming Rabbit Street Subway Station",
-        "to": "Riverside Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Swimming Rabbit Street Subway Station",
         "to": "University",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Swimming Rabbit Street Subway Station",
-        "to": "University Subway Station",
         "system": "Spawn Subway",
         "line": "6"
     },
@@ -6200,24 +5366,6 @@
         "line": "1"
     },
     {
-        "from": "Szymon's Dam Station",
-        "to": "Koshahood Station",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
-        "from": "Szymon's Dam Station",
-        "to": "Koshahood Station",
-        "system": "Express Lines",
-        "line": "XN"
-    },
-    {
-        "from": "Szymon's Dam Station",
-        "to": "Leekston East Station",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
         "from": "S\u00fcdkreuz Station (Personhood)",
         "to": "Grassy Scarp Station",
         "system": "ATL",
@@ -6237,7 +5385,7 @@
     },
     {
         "from": "S\u00fcdkreuz Station (Personhood)",
-        "to": "The Cube Station",
+        "to": "The Cube",
         "system": "ATL",
         "line": "Bronze"
     },
@@ -6268,12 +5416,6 @@
     {
         "from": "Tanh Cliffs Station",
         "to": "No Idea",
-        "system": "Local Lines",
-        "line": "S23"
-    },
-    {
-        "from": "Tanh Cliffs Station",
-        "to": "No Idea Station",
         "system": "Local Lines",
         "line": "S23"
     },
@@ -6357,57 +5499,15 @@
     },
     {
         "from": "The Cube",
-        "to": "Town Hall Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Ice"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Ehlodex Station",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Ehlodex Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Lusin Street Station",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Personhood South Station",
-        "system": "Express Lines",
-        "line": "E1"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Personhood West Station",
-        "system": "Express Lines",
-        "line": "CFE"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Personhood West Station",
-        "system": "Express Lines",
-        "line": "NX"
-    },
-    {
-        "from": "The Cube Station",
-        "to": "Piet Station (Neverbuild)",
-        "system": "OTL",
-        "line": "Mithril"
-    },
-    {
-        "from": "The Cube Station",
         "to": "S\u00fcdkreuz Station (Personhood)",
         "system": "ATL",
         "line": "Bronze"
+    },
+    {
+        "from": "The Cube",
+        "to": "Town Hall Station (Neverbuild)",
+        "system": "OTL",
+        "line": "Ice"
     },
     {
         "from": "The Cube Valley Station (Neverbuild)",
@@ -6429,7 +5529,7 @@
     },
     {
         "from": "Theodor Adorno Street Subway Station",
-        "to": "East Origin Subway Station",
+        "to": "East Origin Station",
         "system": "Spawn Subway",
         "line": "5"
     },
@@ -6471,12 +5571,6 @@
     },
     {
         "from": "Tom Lehrer Street Subway Station",
-        "to": "Library Subway Station",
-        "system": "Spawn Subway",
-        "line": "5"
-    },
-    {
-        "from": "Tom Lehrer Street Subway Station",
         "to": "Shanielle City Subway Station",
         "system": "Spawn Subway",
         "line": "1"
@@ -6506,30 +5600,6 @@
         "line": "Ice"
     },
     {
-        "from": "Town Hall Station (Personhood)",
-        "to": "Church of Emacs Station (Personhood)",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Town Hall Station (Personhood)",
-        "to": "Church of Emacs Station (Personhood)",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
-        "from": "Town Hall Station (Personhood)",
-        "to": "Och Noe's Lake",
-        "system": "Personhood",
-        "line": "S15"
-    },
-    {
-        "from": "Town Hall Station (Personhood)",
-        "to": "Och Noe's Lake",
-        "system": "Personhood",
-        "line": "S16"
-    },
-    {
         "from": "Trap City Airport Station",
         "to": "Arcadius Station",
         "system": "Local Lines",
@@ -6554,12 +5624,6 @@
         "line": "S20"
     },
     {
-        "from": "Trap City Station",
-        "to": "Bamboo Maar Station",
-        "system": "Express Lines",
-        "line": "E4"
-    },
-    {
         "from": "Treehouse Hotel Subway Station",
         "to": "Desert Canyon Subway Station",
         "system": "Spawn Subway",
@@ -6574,12 +5638,6 @@
     {
         "from": "Trisiston Station",
         "to": "Elders Valley North West Station",
-        "system": "Trisiston",
-        "line": "S31"
-    },
-    {
-        "from": "Trisiston Station",
-        "to": "Elders Valley North West Station (Trisiston)",
         "system": "Trisiston",
         "line": "S31"
     },
@@ -6624,12 +5682,6 @@
         "to": "Morea Street Station (Trisiston)",
         "system": "Trisiston",
         "line": "S30"
-    },
-    {
-        "from": "Trisiston Station",
-        "to": "Sraczka's Village Station",
-        "system": "Express Lines",
-        "line": "E3"
     },
     {
         "from": "Trisiston Station",
@@ -6686,25 +5738,13 @@
         "line": "6"
     },
     {
-        "from": "University Subway Station",
-        "to": "Archangel Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "University Subway Station",
-        "to": "Swimming Rabbit Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
         "from": "V Tecta Union Station",
         "to": "Mushroom Coast Station",
         "system": "Veaca",
         "line": "Kerbin"
     },
     {
-        "from": "Valley of Pharoah Station",
+        "from": "Valley of Pharoah",
         "to": "Land's End West Station",
         "system": "Express Lines",
         "line": "E2"
@@ -6722,20 +5762,8 @@
         "line": "1"
     },
     {
-        "from": "Volcano Cliffs Subway Station",
-        "to": "North Harbour Subway Station",
-        "system": "Spawn Subway",
-        "line": "1"
-    },
-    {
         "from": "Water Pyramid Subway Station",
         "to": "Green Hope Station",
-        "system": "Spawn Subway",
-        "line": "4"
-    },
-    {
-        "from": "Water Pyramid Subway Station",
-        "to": "Green Hope Subway Station",
         "system": "Spawn Subway",
         "line": "4"
     },
@@ -6752,14 +5780,14 @@
         "line": "4"
     },
     {
-        "from": "Watson-Crick Street Station (Origin Ring Lines)",
-        "to": "Marcuse Street Station",
+        "from": "Watson-Crick Street Subway Station",
+        "to": "Ice Rink Station (Origin Ring Lines)",
         "system": "Origin Ring Lines",
         "line": "1"
     },
     {
         "from": "Watson-Crick Street Subway Station",
-        "to": "Ice Rink Station (Origin Ring Lines)",
+        "to": "Marcuse Street Station",
         "system": "Origin Ring Lines",
         "line": "1"
     },
@@ -6860,26 +5888,8 @@
         "line": "6"
     },
     {
-        "from": "Yoshi Island Subway Station",
-        "to": "Riverside Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
         "from": "Zoo Subway Station",
         "to": "Euler Street Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Zoo Subway Station",
-        "to": "Euler Street Subway Station",
-        "system": "Spawn Subway",
-        "line": "6"
-    },
-    {
-        "from": "Zoo Subway Station",
-        "to": "Library Subway Station",
         "system": "Spawn Subway",
         "line": "6"
     },

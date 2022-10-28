@@ -41,11 +41,15 @@ class CustomizableEndpointWiki(Wiki):
 
 
 api_path = "http://wiki.linux-forks.de/mediawiki/api.php"
-lw_wiki = CustomizableEndpointWiki(domain="wiki.linux-forks.de",
-                                   api_endpoint="https://wiki.linux-forks.de/mediawiki/api.php",
-                                   cookie_jar=Path("./cookies"),
-                                   username="Apprentice")  # make username lowercase to login, uppercase to use cookies
-lw_wiki.save_cookies()
+try:
+    # make username lowercase to log in, uppercase to use cookies (e.g. "log_me_in" "Using_cookies"
+    lw_wiki = CustomizableEndpointWiki(domain="wiki.linux-forks.de",
+                                       api_endpoint="https://wiki.linux-forks.de/mediawiki/api.php",
+                                       cookie_jar=Path("./cookies"),
+                                       username="Apprentice")
+    lw_wiki.save_cookies()
+except OSError:  # If we have no internet, try to function anyway - only works if all data is cached
+    lw_wiki = None
 
 
 def clean_stations(a: list) -> list:
@@ -103,7 +107,7 @@ print()
 
 closed_stations = set()
 
-# Use this where it is impossible/impractical to add transfer data, and it needs to be ignored therefore
+# Use this where it is impossible/impractical to add transfer data to the wiki, and it therefore needs to be ignored
 skip_transfer_param = [  # ("Station Name", "System Name", "Line Name")
     ("Shore Station", "OTL", "Ice")
 ]
@@ -164,6 +168,9 @@ def param_truthy(param: str) -> bool:
     return param in ["true", "yes", "y", "t", "on", "1"]
 
 
+station_coordinates = {}
+
+
 for station_name, page_contents in stations_data.items():
     station_name: str
     page_contents: str
@@ -176,6 +183,16 @@ for station_name, page_contents in stations_data.items():
             closed_stations.add(station_name)
             print(f"\tCLOSED!!!: {line}")
             break
+        if line.replace(" ", "").startswith("|coordinates="): # parse mediawiki coordinates
+            crds_line = line.replace(" ", "").removeprefix("|coordinates=")
+            crds_line = crds_line[crds_line.index("{{Co"):crds_line.index("}}") + 2]
+            crds_line = crds_line.removeprefix("{{Co|").removesuffix("}}")
+
+            coordinates = tuple(int(v) for v in crds_line.split("|")[:3])
+
+            if len(coordinates) != 3:
+                raise Exception(f"Invalid coordinates: {coordinates}")
+            station_coordinates[station_name] = coordinates
         if line.startswith("{{s-line"):
             '''if station_name == "Shore Station":
                 wt = WParser.parse(wiki=lw_wiki, text=line)
@@ -188,8 +205,7 @@ for station_name, page_contents in stations_data.items():
             # print(line_dict)
             train_system = line_dict["system"]
             train_line = line_dict["line"]
-            previous_station = line_dict.get("previous",
-                                             None)  # Need parsing with page "System_Name_stations" to get full page name. Do this now
+            previous_station = line_dict.get("previous", None)
             next_station = line_dict.get("next", None)
             if next_station == "":
                 next_station = None
@@ -199,7 +215,8 @@ for station_name, page_contents in stations_data.items():
                 continue
             if previous_station == "???" or next_station == "???":
                 continue
-            open_station_parts.append(StationPart(station_name, train_system, train_line, previous_station, next_station,
+            open_station_parts.append(StationPart(station_name, train_system, train_line,
+                                                  previous_station, next_station,
                                                   transfer_station=line_dict.get("transfer", None),
                                                   oneway_prev=param_truthy(line_dict.get("oneway1", "false")),
                                                   oneway_next=param_truthy(line_dict.get("oneway2", "false"))
@@ -237,11 +254,11 @@ system_namings = {  # TODO Pull this automatically from files (at least where no
     },
     "Eden Ferries": {
         "Shanielle Inlet": "Shanielle Inlet Station",
-        "#default": "$Ferry  Station"
+        "#default": "$ Ferry Station"
     },
     "Express Lines": {
         "Spawn": "Spawn Main Station",
-        "Origin": "Marcus Street Station",
+        "Origin": "Marcuse Street Station",
         "Stallmangrad": "Stallmangrad Central Station",
         "Nadinetopia": "Nadinetopia Station (Personhood)",
         "Northlands Interchange": "Northlands Interchange",
@@ -419,16 +436,61 @@ all_links = []
 for station_part in open_station_parts:
     all_links.extend(station_part.to_links())
 
+try:
+    with open("cached_data/redirects.json") as f:
+        redirects, no_redirect = json.load(f)
+except FileNotFoundError:
+    input("No cached_data/redirects.json found. Press [Enter] to continue...")
+    redirects = {}
+    no_redirect = []
+
+redirects: dict[str, str]
+no_redirect: list[str]
+
+needed_redirects = []
+
+for link in all_links:
+    if link.to_name not in redirects.keys() and link.to_name not in no_redirect:
+        needed_redirects.append(link.to_name)
+    if link.from_name not in redirects.keys() and link.from_name not in no_redirect:
+        needed_redirects.append(link.from_name)
+
+needed_redirects = list(set(needed_redirects))
+print(f"Number of uncached redirect checks: {len(needed_redirects)}")
+for needed_redirect in needed_redirects:
+    print(f"Redirect not cached: {needed_redirect}, will request...")
+for i, needed_redirect in enumerate(needed_redirects):
+    print(f"Percent done: {i / len(needed_redirects) * 100:.2f}%", end="\n")
+    new_title = lw_wiki.resolve_redirect(needed_redirect)
+    if new_title != needed_redirect:
+        redirects[needed_redirect] = new_title
+    else:
+        no_redirect.append(needed_redirect)
+
+no_redirect = list(set(no_redirect))
+with open("cached_data/redirects.json", "w") as f:
+    json.dump([redirects, no_redirect], f, indent=4)
+
 pre = len(all_links)
 all_links = list(set(all_links))
 post = len(all_links)
+for link in all_links:
+    if link.to_name in redirects.keys():
+        link.to_name = redirects[link.to_name]
+    if link.from_name in redirects.keys():
+        link.from_name = redirects[link.from_name]
+all_links = list(set(all_links))
+post2 = len(all_links)
 print(f"Number of links: {pre}")
 print(f"Number of (deduplicated) links: {post}, difference: {pre-post}")
+print(f"Number of (further deduplicated) links: {post2}, difference: {post-post2}")
 print(f"Number of open stations: {len(stations_data)-len(closed_stations)}")
 
 all_links.sort(key=lambda x: str(x))
 print("Saving links...")
 with open("saves/all_links.json", "w") as f:
-    val = [v.save() for v in all_links]
-    json.dump(val, f, indent=4)
+    json.dump([v.save() for v in all_links], f, indent=4)
+
+with open("saves/station_coordinates.json", "w") as f:
+    json.dump(station_coordinates, f, indent=4)
 print("Done.")
