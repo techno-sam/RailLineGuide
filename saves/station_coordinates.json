@@ -1353,5 +1353,190 @@
         -820,
         8,
         -430
+    ],
+    "Ashstar's Station": [
+        2995,
+        10,
+        -300
+    ],
+    "Azena Transirejo Station": [
+        1976,
+        43,
+        8387
+    ],
+    "Baka North Station": [
+        4944,
+        23,
+        6603
+    ],
+    "Banana Place Central Station": [
+        776,
+        26,
+        8510
+    ],
+    "Banana Place Market Station": [
+        820,
+        20,
+        8625
+    ],
+    "Brimstone Station (Neverbuild)": [
+        900,
+        7,
+        2160
+    ],
+    "C&C Annoying Yard": [
+        4944,
+        23,
+        6603
+    ],
+    "C&C Farm Station": [
+        5394,
+        13,
+        6897
+    ],
+    "Cross Bay Station": [
+        5266,
+        5,
+        6721
+    ],
+    "Crossroads City Hall Station": [
+        1770,
+        5,
+        990
+    ],
+    "Dodemo-iisk Station": [
+        -741,
+        14,
+        1000
+    ],
+    "Dry Hills Station": [
+        1825,
+        22,
+        8452
+    ],
+    "Elderwood River Station": [
+        4490,
+        10,
+        770
+    ],
+    "Freya Woods Station (Trisiston)": [
+        -4310,
+        15,
+        -2955
+    ],
+    "INTERCAL Station": [
+        1630,
+        11,
+        4630
+    ],
+    "Kangasvarkaan Rautatieasema": [
+        4195,
+        6,
+        5628
+    ],
+    "Krasnograd-FTNT Station": [
+        1926,
+        20,
+        8217
+    ],
+    "Levenshtein Canyon Subway Station": [
+        -1420,
+        20,
+        90
+    ],
+    "Lumpenproletariat Prairie Station": [
+        4450,
+        6,
+        770
+    ],
+    "Mary4's Mistake Station": [
+        2745,
+        11,
+        -256
+    ],
+    "Morija Center Station": [
+        4395,
+        0,
+        1950
+    ],
+    "Morija South Station": [
+        4410,
+        5,
+        1540
+    ],
+    "Most! Station": [
+        -1480,
+        4,
+        -3470
+    ],
+    "NYE Square Subway Station": [
+        -1475,
+        10,
+        -70
+    ],
+    "Namespace Mountains East Station": [
+        1187,
+        17,
+        6130
+    ],
+    "New Roses Gardens South Station": [
+        1610,
+        0,
+        8000
+    ],
+    "OCP Showroom Subway Station": [
+        -1475,
+        10,
+        -70
+    ],
+    "Patch of Fire Station": [
+        1130,
+        12,
+        8745
+    ],
+    "Proletarian Station": [
+        -775,
+        7,
+        -19
+    ],
+    "Sakura Gaps Station": [
+        5102,
+        24,
+        6515
+    ],
+    "Sakura Village Marina Station": [
+        3800,
+        10,
+        -50
+    ],
+    "Sakura Village Station": [
+        3590,
+        20,
+        -130
+    ],
+    "Shikatanaevo Station": [
+        -597,
+        19,
+        1315
+    ],
+    "The Cube Valley Station (Neverbuild)": [
+        1175,
+        7,
+        2160
+    ],
+    "The Road Station (Neverbuild)": [
+        700,
+        13,
+        2160
+    ],
+    "Warmoneaye Station": [
+        1930,
+        8,
+        9152
+    ],
+    "West Riverside Station": [
+        -655,
+        17,
+        -930
     ]
 }

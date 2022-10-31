@@ -40,13 +40,30 @@ class Link:
         """If this link was manually added"""
 
         self.distance = None
+        """Distance between stations"""
+
+        self.direction: typing.Optional[str] = None
+        """Direction of travel (left or right), used for finding termini"""
+
+        self.extra_data = {}
+
+    def with_data(self, key, value, ignore_if_none=True) -> "Link":
+        if ignore_if_none and value is None:
+            return self
+        self.extra_data[key] = value
+        return self
+
+    def set_direction(self, direction: str) -> "Link":
+        self.direction = direction
+        return self
 
     def calculate_distance(self, station_coordinates: dict[str, list[int]]):
         # find 3d distance between stations, using 3d pythagorean theorem
         try:
             from_pos = station_coordinates[self.from_name]
             to_pos = station_coordinates[self.to_name]
-            self.distance = math.sqrt((from_pos[0] - to_pos[0]) ** 2 + (from_pos[1] - to_pos[1]) ** 2 + (from_pos[2] - to_pos[2]) ** 2)
+            self.distance = math.sqrt(
+                (from_pos[0] - to_pos[0]) ** 2 + (from_pos[1] - to_pos[1]) ** 2 + (from_pos[2] - to_pos[2]) ** 2)
         except KeyError as e:
             # print(repr(e))
             self.distance = 100
@@ -85,6 +102,8 @@ class Link:
             "from": self.from_name,
             "to": self.to_name
         }
+        if len(self.extra_data) > 0:
+            d["extra_data"] = self.extra_data.copy()
         if self.is_transfer:
             d["is_transfer"] = True
         else:
@@ -92,6 +111,8 @@ class Link:
                 "system": self.rail_system,
                 "line": self.rail_line
             })
+        if self.direction is not None:
+            d["direction"] = self.direction
         if self.is_manual:
             d["manual"] = True
         return d
@@ -104,6 +125,8 @@ class Link:
         line = data.get("line", None)
         is_transfer = data.get("transfer", False)
         link = Link(frm, to, system, line, is_transfer)
+        link.direction = data.get("direction", None)
+        link.extra_data = data.get("extra_data", {})
         if data.get("manual", False):
             link.manual()
         return link
@@ -163,7 +186,7 @@ class Route:
             prev_station = link.to_name
         return True
 
-    def print_test(self, verbose=True, unmerged=False):
+    def print_test(self, termini: dict[tuple[str, str], dict[str, str | list]], verbose=True, unmerged=False):
         if verbose:
             print(f"{self} Cost: {self.cost(0)} (Merged cost: {self.merged().cost(0)}) (Valid: {self.is_valid()})")
         else:
@@ -174,21 +197,39 @@ class Route:
             for link in self.links:
                 alternate = not alternate
                 try:
-                    distance_text = f"{link.distance/1000:.2f} km"
+                    distance_text = f"{link.distance / 1000:.2f} km"
                 except TypeError:
                     distance_text = "???"
+                terminus_text = ""
+                if link.direction is not None and (link.rail_system, link.rail_line) in termini:
+                    terminus = termini[(link.rail_system, link.rail_line)][link.direction]
+                    if type(terminus) == list:
+                        # print(terminus)
+                        val = link.extra_data.get(terminus[0], None)
+                        terminus = terminus[1].get(val, terminus[1].get("#default", "???")) + terminus[2]
+                    terminus_text = f"{Fore.MAGENTA if alternate else Fore.LIGHTRED_EX}" \
+                                    f" [Towards {Style.BRIGHT}{terminus}{Style.NORMAL}]{Style.RESET_ALL}"
                 print(f"\t{Fore.GREEN if alternate else Fore.LIGHTGREEN_EX}{link}"
                       f" {Style.BRIGHT}{Fore.LIGHTYELLOW_EX if alternate else Fore.YELLOW}{distance_text}"
-                      f"{Style.RESET_ALL}")
+                      f"{Style.RESET_ALL}{terminus_text}")
             print(f"\n{Fore.LIGHTCYAN_EX}{Style.BRIGHT}Merged:{Style.RESET_ALL}")
         for link in self.merged().links:
             alternate = not alternate
             try:
-                distance_text = f"{link.distance/1000:.2f} km"
+                distance_text = f"{link.distance / 1000:.2f} km"
             except TypeError:
                 distance_text = "???"
+            terminus_text = ""
+            if link.direction is not None and (link.rail_system, link.rail_line) in termini:
+                terminus = termini[(link.rail_system, link.rail_line)][link.direction]
+                if type(terminus) == list:
+                    val = link.extra_data.get(terminus[0], None)
+                    terminus = terminus[1].get(val, terminus[1].get("#default", "???")) + terminus[2]
+                terminus_text = f"{Fore.MAGENTA if alternate else Fore.LIGHTRED_EX}" \
+                                f" [Towards {Style.BRIGHT}{terminus}{Style.NORMAL}]{Style.RESET_ALL}"
             print(f"\t{Fore.GREEN if alternate else Fore.LIGHTGREEN_EX}{link}"
-                  f" {Style.BRIGHT}{Fore.LIGHTYELLOW_EX if alternate else Fore.YELLOW}{distance_text}{Style.RESET_ALL}")
+                  f" {Style.BRIGHT}{Fore.LIGHTYELLOW_EX if alternate else Fore.YELLOW}{distance_text}"
+                  f"{Style.RESET_ALL}{terminus_text}")
 
     def add_link(self, link: Link) -> "Route":
         if link.to_name in self._traveled_station_names:
@@ -216,6 +257,8 @@ class Route:
                         and not last_link.is_transfer and not link.is_transfer:
                     last_link.to_name = link.to_name
                     last_link.distance += link.distance
+                    for k, v in link.extra_data.items():
+                        last_link.extra_data[k] = v
                 else:
                     new_route.links.append(link.copy())
             else:
@@ -295,9 +338,9 @@ class StationGraph:
         station traveled
         :param max_iters: if > 0, force stop after `max_iters` iterations
         """
-#        for name, stat in self._stations.items():
-#            if name != stat.name:
-#                raise ValueError(f"Name {name} doesn't match station {stat.name}| {stat}")
+        #        for name, stat in self._stations.items():
+        #            if name != stat.name:
+        #                raise ValueError(f"Name {name} doesn't match station {stat.name}| {stat}")
         if from_name not in self._stations or to_name not in self._stations:
             return []
 
@@ -313,7 +356,7 @@ class StationGraph:
             best_merged_hops = float("inf")
             iters = 0
             while True:
-                if 0 < max_iters < iters:
+                if 0 < max_iters and (max_iters < iters or (len(solved_routes_list) == 1 and max_iters / 3 < iters)):
                     break
 
                 # Check for exit condition based on strategy
@@ -371,10 +414,10 @@ class StationGraph:
         solver(solved_routes)
 
         print(f"{Style.BRIGHT}{Fore.CYAN}Returning...{Style.RESET_ALL}")
-#        first = solved_routes[0]
+        #        first = solved_routes[0]
         solved_routes.sort(key=lambda x: x.cost(change_weight))
-#        if solved_routes[0] != first:
-#            print(f"{Fore.RED}First route changed from {first} to {solved_routes[0]}{Style.RESET_ALL}")
+        #        if solved_routes[0] != first:
+        #            print(f"{Fore.RED}First route changed from {first} to {solved_routes[0]}{Style.RESET_ALL}")
         return solved_routes
 
 
@@ -422,6 +465,10 @@ class StationPart:
         self.oneway_next = oneway_next and not oneway_prev
         """Trains do not operate towards next station"""
 
+        self.branch = None
+        self.type = None
+        self.type2 = None
+
     def __str__(self) -> str:
         out = "["
         if self.previous_station_name is not None:
@@ -451,14 +498,26 @@ class StationPart:
             out.append(Link.transfer(self.transfer_station, self.name))
 
         if self.previous_station_name is not None:
-            out.append(Link(self.previous_station_name, route_src, self.system, self.sub_line))
+            out.append(Link(self.previous_station_name, route_src, self.system, self.sub_line)
+                       .set_direction("right")
+                       .with_data("branch", self.branch)
+                       .with_data("type", self.type2))
             if not self.oneway_prev:
-                out.append(Link(route_src, self.previous_station_name, self.system, self.sub_line))
+                out.append(Link(route_src, self.previous_station_name, self.system, self.sub_line)
+                           .set_direction("left")
+                           .with_data("branch", self.branch)
+                           .with_data("type", self.type))
 
         if self.next_station_name is not None:
-            out.append(Link(self.next_station_name, route_src, self.system, self.sub_line))
+            out.append(Link(self.next_station_name, route_src, self.system, self.sub_line)
+                       .set_direction("left")
+                       .with_data("branch", self.branch)
+                       .with_data("type", self.type))
             if not self.oneway_next:
-                out.append(Link(route_src, self.next_station_name, self.system, self.sub_line))
+                out.append(Link(route_src, self.next_station_name, self.system, self.sub_line)
+                           .set_direction("right")
+                           .with_data("branch", self.branch)
+                           .with_data("type", self.type2))
 
         for disabled in DISABLED_LINKS:
             try:

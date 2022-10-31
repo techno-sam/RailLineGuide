@@ -1,6 +1,7 @@
 import json
 import math
 import time
+import os
 from common import Link, Station, StationGraph
 from colorama import Fore, Style
 
@@ -44,9 +45,14 @@ def time_format(seconds: int) -> str:
         return f"{seconds//3600}h {seconds//60%60}m {seconds%60}s"
 
 
+termini: dict[tuple[str, str], dict[str, str | list]] = {}
+for system_dir in os.listdir("cached_data/termini"):
+    for line_file in os.listdir("cached_data/termini/" + system_dir):
+        with open(f"cached_data/termini/{system_dir}/{line_file}", "r") as f:
+            termini[(system_dir.replace("_", " "), line_file.replace("_", " ").replace(".json", ""))] = json.load(f)
+
+
 def find_and_print_route():
-    # Add terminus data. So a route could be:
-    # Church Station -> Wolf Rock Station (Along `Express Lines` Line `E3` Toward `Terminus`)
     from_name = input("From: ")
     if " -> " in from_name:
         to_name = from_name.split(" -> ")[1]
@@ -82,7 +88,7 @@ def find_and_print_route():
         train_dist = routes[0].distance_cost()
         print(f"{Fore.LIGHTWHITE_EX}Distance (riding on a train): {train_dist/1000:.2f} km  {Fore.LIGHTYELLOW_EX}"
               f"Should take: {time_format(round(train_dist/train_speed))}{Style.RESET_ALL}")
-        routes[0].print_test(verbose=False, unmerged=True)
+        routes[0].print_test(termini, verbose=False, unmerged=True)
         input("Press [Enter] to continue...")
         print("\n\n\n")
         print_all_stations()

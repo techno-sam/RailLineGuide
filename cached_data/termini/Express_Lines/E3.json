@@ -1,0 +1,13 @@
+{
+    "left": [
+        "type",
+        {
+            "Sra": "BigFishCity",
+            "Gef": "Garden of Eden Ferry",
+            "#default": "BigFishCity Station/Garden of Eden Ferry"
+        },
+        " Station"
+    ],
+    "_old_left": "{{#switch:{{{type}}}\n| Sra=BigFishCity\n| Gef=Garden of Eden Ferry\n| #default=Sra/Gef\n}} Station",
+    "right": "Euler Street Station"
+}

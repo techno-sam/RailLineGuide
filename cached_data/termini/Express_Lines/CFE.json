@@ -1,0 +1,20 @@
+{
+    "left": [
+        "branch",
+        {
+            "NRG": "New Roses Gardens South",
+            "#default": "Berton Street"
+        },
+        " Station"
+    ],
+    "_old_left": "{{#switch:{{{branch}}}\n| NRG = New Roses Gardens South\n| #default = Berton Street\n}} Station",
+    "right": [
+        "branch",
+        {
+            "NRG": "Azena Transirejo",
+            "#default": "Warmoneaye"
+        },
+        " Station"
+    ],
+    "_old_right": "{{#switch:{{{branch}}}\n| NRG = Azena Transirejo\n| #default = Warmoneaye\n}} Station"
+}

@@ -1,0 +1,28 @@
+{
+    "left": [
+        "type",
+        {
+            "IceM": "Ice Mountain",
+            "OCS": "OCP Showroom",
+            "NYE": "NYE Square",
+            "Sws": "Schwarzschild Street",
+            "Wpy": "Water Pyramid",
+            "Bts": "Berton Street",
+            "#default": "OCP Showroom Subway Station/Ice Mountain"
+        },
+        " Subway Station"
+    ],
+    "_old_left":"{{#switch:{{{type}}}\n| IceM=Ice Mountain\n| OCS=OCP Showroom\n| NYE=NYE Square\n| Sws=Schwarzschild Street\n| Wpy=Water Pyramid\n| Bts=Berton Street\n| #default=OCS/IceM\n}} Subway Station",
+    "right": [
+        "type",
+        {
+            "NYE": "NYE Square",
+            "Sws": "Schwarzschild Street",
+            "Wpy": "Water Pyramid",
+            "Bts": "Berton Street",
+            "#default": "NYE Square Subway Station/Berton Street"
+        },
+        " Subway Station"
+    ],
+    "_old_right": "{{#switch:{{{type}}}\n| NYE=NYE Square\n| Sws=Schwarzschild Street\n| Wpy=Water Pyramid\n| Bts=Berton Street\n| #default=NYE/Sws\n}} Subway Station"
+}

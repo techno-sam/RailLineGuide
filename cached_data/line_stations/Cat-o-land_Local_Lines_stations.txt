@@ -1,0 +1,4 @@
+{{#switch:{{{station}}}
+ | Bamboo Hotel = [[Bamboo Hotel Station (Cat-o-land)|Bamboo Hotel]]
+ | #default = [[{{{station}}} Station|{{{station}}}]]
+}}
