@@ -356,7 +356,7 @@ class StationGraph:
             best_merged_hops = float("inf")
             iters = 0
             while True:
-                if 0 < max_iters and (max_iters < iters or (len(solved_routes_list) == 1 and max_iters / 3 < iters)):
+                if 0 < max_iters and (max_iters < iters):
                     break
 
                 # Check for exit condition based on strategy
@@ -370,6 +370,7 @@ class StationGraph:
                         break
                 else:
                     if len(solved_routes_list) >= strategy:
+                        print("Length more than strategy")
                         break
 
                 iters += 1

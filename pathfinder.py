@@ -63,7 +63,7 @@ def find_and_print_route():
 #    to_name = "CXC Station"  # About 13 seconds w/o threading and strategy=100
     print("Solving...\n")
     pre = time.perf_counter()
-    routes = station_graph.find_route(from_name, to_name, change_weight=0.1, strategy=10, max_iters=200000)
+    routes = station_graph.find_route(from_name, to_name, change_weight=0.1, strategy=500, max_iters=200000)
     post = time.perf_counter()
     print(f"\n{Style.BRIGHT}{Fore.LIGHTYELLOW_EX}Time taken: {post - pre:.3f}s{Style.RESET_ALL}")
     # print("Done solving...")
